@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "ai-foundations",
+    "title": "AI Foundations for Beginners",
+    "description": "A plain-language introduction to what AI is, what it can do well, and where it falls short.",
+    "audience": "Anyone curious about AI, with no technical background required.",
+    "objectives": ["Understand core AI concepts in everyday terms", "Use AI assistants confidently for daily tasks", "Recognize common limits and risks"]
+  },
+  {
+    "slug": "prompt-engineering",
+    "title": "Prompt Engineering Essentials",
+    "description": "Learn to give clear instructions to AI tools and get more reliable results.",
+    "audience": "Professionals and learners who already use AI tools and want better results.",
+    "objectives": ["Structure clear, specific prompts", "Iterate and refine outputs", "Build reusable prompt templates"]
+  },
+  {
+    "slug": "vibe-coding",
+    "title": "Vibe Coding Without Traditional Programming",
+    "description": "Build working software by describing what you want and guiding AI coding tools.",
+    "audience": "Non-programmers who want to create software.",
+    "objectives": ["Describe an app idea so AI can build it", "Review and test AI-generated results", "Make iterative changes with confidence"]
+  },
+  {
+    "slug": "websites-with-ai",
+    "title": "Building Websites with AI",
+    "description": "Plan, create and publish a simple website using AI-assisted tools.",
+    "audience": "Small business owners, creators and career changers.",
+    "objectives": ["Plan pages and content", "Generate and refine a site with AI", "Publish and maintain it"]
+  },
+  {
+    "slug": "ai-agents-chatbots",
+    "title": "Creating AI Agents and Chatbots",
+    "description": "Explore how AI agents work and design a simple assistant for a specific purpose.",
+    "audience": "Learners and business owners interested in custom assistants.",
+    "objectives": ["Understand how agents use instructions and tools", "Design a focused chatbot", "Test behavior and set sensible boundaries"]
+  },
+  {
+    "slug": "business-automation",
+    "title": "Business Automation with AI",
+    "description": "Find repetitive tasks in a small business and automate them with AI-assisted workflows.",
+    "audience": "Small business owners and operations professionals.",
+    "objectives": ["Identify tasks worth automating", "Design a simple automated workflow", "Measure results and keep humans in the loop"]
+  },
+  {
+    "slug": "first-mvp",
+    "title": "Developing Your First MVP",
+    "description": "Turn an idea into a minimum viable product you can put in front of real users.",
+    "audience": "Aspiring entrepreneurs with an idea.",
+    "objectives": ["Define a focused scope", "Build a first prototype with AI tools", "Plan how to gather user feedback"]
+  },
+  {
+    "slug": "launch-and-manage",
+    "title": "Launching and Managing a Digital Product",
+    "description": "Understand the practical steps of releasing, supporting and improving a digital product.",
+    "audience": "Builders preparing to release their first product.",
+    "objectives": ["Prepare a responsible launch", "Handle feedback and support", "Plan ongoing improvements"]
+  },
+  {
+    "slug": "ai-safety-security",
+    "title": "AI Safety, Security, and Responsible Development",
+    "description": "Practical habits for privacy, security and human oversight when building with AI.",
+    "audience": "Anyone building or deploying AI-assisted tools.",
+    "objectives": ["Protect user data and secrets", "Recognize common security mistakes", "Apply human oversight and transparency"]
+  },
+  {
+    "slug": "learner-to-entrepreneur",
+    "title": "From Technology Learner to Entrepreneur",
+    "description": "Bring skills together to shape a product idea into a sustainable venture plan.",
+    "audience": "Learners ready to explore entrepreneurship.",
+    "objectives": ["Clarify an audience and problem", "Outline a simple business approach", "Plan responsible next steps"]
+  }
+]

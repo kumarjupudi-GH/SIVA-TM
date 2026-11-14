@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "kinkeep",
+    "name": "KinKeep",
+    "tagline": "Family preparedness and legacy planning",
+    "description": "Family preparedness, important document organization, and legacy planning.",
+    "icon": "ShieldCheck",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": true
+  },
+  {
+    "slug": "brainboostbuddy",
+    "name": "BrainBoostBuddy",
+    "tagline": "Homework guidance and student learning",
+    "description": "Interactive homework guidance and student learning.",
+    "icon": "Brain",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": true
+  },
+  {
+    "slug": "artbuddy",
+    "name": "ArtBuddy",
+    "tagline": "Creativity, step by step",
+    "description": "Drawing techniques, creativity, and step-by-step art education.",
+    "icon": "Palette",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": false
+  },
+  {
+    "slug": "nutrition-yoga-buddy",
+    "name": "Nutrition & Yoga Buddy",
+    "tagline": "General wellness education",
+    "description": "General wellness education and healthy habits. Educational only; not medical advice.",
+    "icon": "HeartPulse",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": false
+  },
+  {
+    "slug": "budget-buddy",
+    "name": "Budget Buddy",
+    "tagline": "Family budgeting made organized",
+    "description": "Family budgeting and expense organization.",
+    "icon": "Wallet",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": false
+  },
+  {
+    "slug": "tripmebuddy",
+    "name": "TripMeBuddy",
+    "tagline": "Travel planning and itineraries",
+    "description": "Travel planning and itinerary creation.",
+    "icon": "Plane",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": false
+  },
+  {
+    "slug": "chefbuddy",
+    "name": "ChefBuddy",
+    "tagline": "Cooking guidance and meal ideas",
+    "description": "Cooking guidance and meal ideas.",
+    "icon": "ChefHat",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": false
+  },
+  {
+    "slug": "gardenbuddy",
+    "name": "GardenBuddy",
+    "tagline": "Gardening and plant care",
+    "description": "Gardening and plant care guidance.",
+    "icon": "Sprout",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": false
+  },
+  {
+    "slug": "home-maintenance-buddy",
+    "name": "Home Maintenance Buddy",
+    "tagline": "Appliance and household help",
+    "description": "Appliance troubleshooting and household maintenance guidance.",
+    "icon": "Wrench",
+    "status": "Coming Soon",
+    "url": "",
+    "featured": false
+  }
+]

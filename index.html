@@ -1,0 +1,991 @@
+<title>SIVA Techno Mart</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="SIVA Techno Mart is an AI Academy and Entrepreneurship Hub. Learn practical AI skills, build useful applications and explore entrepreneurship.">
+<meta property="og:title" content="SIVA Techno Mart | AI Academy & Entrepreneurship Hub">
+<meta property="og:description" content="From AI Learner to Technology Creator. From Technology Creator to Entrepreneur.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700&display=swap">
+<style>
+/* Layout concept: a fixed WebGL scene (neural lattice, core, journey helix, lab shapes) behind
+   translucent content bands. Hero and page heads stay clear so the 3D shows through. */
+:root{
+  --navy:#08162E; --navy-2:#0C1F3F; --blue:#1478D4; --cyan:#43D9EE; --gold:#D9B86C; --cloud:#F5F8FC;
+  --muted:#A8B8CF; --line:rgba(245,248,252,.16); --panel:rgba(11,28,56,.78); --band:rgba(8,22,46,.80);
+  --font-display:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --maxw:1160px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--cloud);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
+body.menu-open{overflow:hidden}
+html.no3d body{background:radial-gradient(900px 600px at 78% 8%,rgba(20,120,212,.32),transparent 60%),radial-gradient(700px 500px at 8% 70%,rgba(67,217,238,.12),transparent 60%),var(--navy)}
+#stage{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+html.no3d #stage{display:none}
+.shell{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
+main{flex:1}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem);letter-spacing:-.025em}
+h2{font-size:clamp(1.6rem,3.2vw,2.4rem)}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:var(--cyan);text-underline-offset:3px}
+a:hover{color:var(--cloud)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+h1[tabindex="-1"]:focus,main:focus{outline:none}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:72px;background:var(--band);border-top:1px solid var(--line)}
+.band.clear{background:transparent;border-top:0}
+.band.alt{background:rgba(12,31,63,.86)}
+.hero{padding-block:88px 96px}
+.pagehead{padding-block:72px 56px}
+.eyebrow{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.lead{font-size:1.14rem;color:#D5DFEE;max-width:62ch;margin-top:20px}
+.muted{color:var(--muted)}
+.sec-head{display:grid;gap:12px;margin-bottom:36px;max-width:64ch}
+.sec-head p{color:var(--muted)}
+.accent{color:var(--cyan)}
+.skip{position:absolute;left:12px;top:-60px;z-index:80;background:var(--cloud);color:var(--navy);padding:10px 14px;border-radius:6px;font-weight:700;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+
+/* header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(8,22,46,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--cloud);text-decoration:none;font-family:var(--font-display);font-weight:700;letter-spacing:.01em}
+.brand svg{width:30px;height:30px;flex:none}
+.brand span b{color:var(--cyan);font-weight:700}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{color:#CBD7EA;text-decoration:none;font-size:.92rem;font-weight:600;padding:10px 12px;border-radius:8px}
+.nav-links a:hover{color:var(--cloud);background:rgba(245,248,252,.07)}
+.nav-links a[aria-current="page"]{color:var(--cyan)}
+.nav-links a.cta{background:var(--blue);color:#fff;margin-left:8px}
+.nav-links a.cta:hover{background:#1B86E8}
+.menu-btn{display:none;background:transparent;border:1px solid var(--line);color:var(--cloud);border-radius:8px;width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center}
+.menu-btn svg{width:22px;height:22px}
+#menu{display:none;border-top:1px solid var(--line);background:var(--navy)}
+#menu .wrap{display:grid;padding-block:12px 18px;gap:2px}
+#menu a{color:var(--cloud);text-decoration:none;font-weight:600;padding:13px 6px;border-bottom:1px solid var(--line)}
+#menu a[aria-current="page"]{color:var(--cyan)}
+@media (max-width:1020px){
+  .nav-links{display:none}.menu-btn{display:inline-flex}
+  #menu.open{display:block;max-height:calc(100vh - 68px);overflow:auto}
+}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:700 .96rem var(--font-body);padding:14px 22px;border-radius:10px;border:1px solid transparent;text-decoration:none;cursor:pointer;min-height:48px;transition:transform .15s,background .15s,border-color .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:#1B86E8;color:#fff}
+.btn-gold{background:var(--gold);color:#10213D}.btn-gold:hover{background:#E6C985;color:#10213D}
+.btn-ghost{background:rgba(8,22,46,.4);border-color:rgba(67,217,238,.55);color:var(--cyan)}.btn-ghost:hover{background:rgba(67,217,238,.12);color:var(--cloud)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+/* hero */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:32px}
+.hero-copy{min-width:0}
+.tagline{font-family:var(--font-display);color:var(--gold);font-size:1.02rem;font-weight:600;margin-top:24px}
+.chain{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.82rem;line-height:1.9;color:#C3D2E8;max-width:60ch}
+.chain b{color:var(--cyan);font-weight:500}
+.scene-hint{align-self:end;justify-self:end;font-family:var(--font-mono);font-size:.74rem;color:var(--muted);letter-spacing:.08em}
+html.no3d .scene-hint{display:none}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero{padding-block:48px 56px}
+  .hero-copy{background:linear-gradient(180deg,rgba(8,22,46,.72),rgba(8,22,46,.55));border:1px solid var(--line);border-radius:16px;padding:24px 20px}
+  .scene-hint{display:none}
+}
+
+/* grids and panels */
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:980px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}.band{padding-block:52px}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;min-width:0}
+.panel p{color:#CBD7EA}
+.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out,border-color .2s,box-shadow .2s;will-change:transform}
+.tilt:hover{border-color:rgba(67,217,238,.55);box-shadow:0 18px 50px -20px rgba(67,217,238,.35)}
+.icon{width:34px;height:34px;color:var(--cyan);margin-bottom:16px;display:block}
+.stack{display:grid;gap:12px}
+.chip{display:inline-block;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted)}
+.badge{display:inline-block;font-family:var(--font-mono);font-size:.74rem;border-radius:999px;padding:4px 12px;border:1px solid}
+.badge[data-s="Available"]{color:#7BE9C4;border-color:rgba(123,233,196,.5);background:rgba(123,233,196,.08)}
+.badge[data-s="Beta"]{color:var(--cyan);border-color:rgba(67,217,238,.5);background:rgba(67,217,238,.08)}
+.badge[data-s="Prototype"]{color:var(--gold);border-color:rgba(217,184,108,.55);background:rgba(217,184,108,.08)}
+.badge[data-s="Coming Soon"]{color:#C3D0E3;border-color:rgba(195,208,227,.4)}
+.badge[data-s="Experimental"]{color:var(--gold);border-color:rgba(217,184,108,.55);background:rgba(217,184,108,.08)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.card-foot{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.link-arrow{font-weight:700;text-decoration:none}
+.link-arrow::after{content:" \2192"}
+.notice{border:1px solid rgba(217,184,108,.5);background:rgba(217,184,108,.09);color:#EBD9AE;border-radius:12px;padding:14px 18px;font-size:.94rem;max-width:80ch}
+.notice strong{color:var(--gold)}
+ul.tick{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+ul.tick li{padding-left:24px;position:relative;color:#CBD7EA}
+ul.tick li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border:2px solid var(--cyan);border-radius:50%}
+.crumb{display:inline-block;margin-bottom:20px;font-weight:600;text-decoration:none}
+
+/* journey */
+.journey{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;counter-reset:j}
+.journey li{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 16px;position:relative;counter-increment:j}
+.journey li::before{content:counter(j);font-family:var(--font-mono);font-size:.8rem;color:var(--navy);background:var(--gold);border-radius:50%;width:26px;height:26px;display:grid;place-items:center;margin-bottom:12px;font-weight:700}
+.journey h3{font-size:1.02rem;margin-bottom:6px}
+.journey p{font-size:.88rem;color:#BFCDE2}
+@media (max-width:1020px){.journey{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.journey{grid-template-columns:minmax(0,1fr)}}
+
+/* lab demo */
+.demo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px}
+@media (max-width:860px){.demo{grid-template-columns:minmax(0,1fr)}}
+[role="tablist"]{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+[role="tab"]{font:600 .9rem var(--font-body);color:#CBD7EA;background:transparent;border:1px solid var(--line);border-radius:8px;padding:10px 16px;cursor:pointer;min-height:44px}
+[role="tab"][aria-selected="true"]{background:var(--blue);color:#fff;border-color:var(--blue)}
+.promptbox{font-family:var(--font-mono);font-size:.86rem;line-height:1.7;background:#06122A;border:1px solid var(--line);border-radius:10px;padding:16px;color:#DCE7F7;margin-top:12px}
+.sample{background:#06122A;border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:14px}
+.sample .row{display:grid;gap:6px}
+.sample output{display:block;font-family:var(--font-display);font-size:2rem;color:var(--cyan);font-variant-numeric:tabular-nums}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{font:600 .88rem var(--font-body);background:transparent;color:var(--cloud);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;min-height:40px}
+.seg button[aria-pressed="true"]{background:rgba(67,217,238,.16);border-color:var(--cyan);color:var(--cyan)}
+
+/* forms */
+form{display:grid;gap:16px}
+.field{display:grid;gap:6px;min-width:0}
+label{font-weight:600;font-size:.92rem}
+input[type=text],input[type=email],input[type=number],select,textarea{width:100%;font:inherit;color:var(--cloud);background:#06122A;border:1px solid rgba(245,248,252,.28);border-radius:10px;padding:12px 14px;min-height:46px}
+textarea{min-height:120px;resize:vertical}
+select option{background:#06122A;color:var(--cloud)}
+input[aria-invalid="true"],select[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:#FF8A8A}
+.err{color:#FFB4B4;font-size:.86rem}
+.check{display:flex;gap:12px;align-items:flex-start;font-weight:400;color:#CBD7EA}
+.check input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--blue)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.status{min-height:1px}
+.status .notice{margin-top:4px}
+.status textarea{margin-top:10px;font-family:var(--font-mono);font-size:.82rem;min-height:130px}
+.status .btn{margin-top:10px}
+.ok{border:1px solid rgba(123,233,196,.5);background:rgba(123,233,196,.08);color:#B8F2DD;border-radius:12px;padding:14px 18px}
+.bad{border:1px solid rgba(255,138,138,.5);background:rgba(255,138,138,.08);color:#FFC9C9;border-radius:12px;padding:14px 18px}
+
+/* faq */
+details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 20px}
+details+details{margin-top:10px}
+summary{cursor:pointer;font-family:var(--font-display);font-weight:600;padding:18px 28px 18px 0;list-style:none;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);color:var(--cyan);font-size:1.5rem;font-weight:400}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 0 18px;color:#CBD7EA;max-width:70ch}
+
+/* course page */
+.course-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:900px){.course-grid{grid-template-columns:minmax(0,1fr)}}
+.course-main{display:grid;gap:34px;min-width:0}
+.course-main h2{font-size:1.35rem;margin-bottom:12px}
+.curr{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:c}
+.curr li{counter-increment:c;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px 14px 56px;position:relative}
+.curr li::before{content:counter(c);position:absolute;left:16px;top:14px;font-family:var(--font-mono);color:var(--gold);font-size:.95rem}
+.curr b{display:block;font-family:var(--font-display);font-weight:600}
+.curr span{color:#BFCDE2;font-size:.93rem}
+.aside{display:grid;gap:18px;position:sticky;top:calc(88px + env(safe-area-inset-top,0px))}
+@media (max-width:900px){.aside{position:static}}
+.placeholder{border:1px dashed rgba(217,184,108,.6);border-radius:12px;padding:16px;color:#EBD9AE;font-size:.94rem}
+
+/* footer */
+.site-footer{background:#050E20;border-top:1px solid var(--line);padding-block:48px 36px;color:var(--muted);font-size:.92rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+@media (max-width:860px){.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
+.site-footer h3{font-size:.8rem;font-family:var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cloud);margin-bottom:12px;font-weight:500}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.site-footer a{color:var(--muted);text-decoration:none}
+.site-footer a:hover{color:var(--cyan)}
+.fine{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);display:grid;gap:8px;max-width:90ch}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .tilt{transform:none!important}
+}
+</style>
+
+<canvas id="stage" aria-hidden="true"></canvas>
+
+<div class="shell">
+  <a class="skip" href="#main" id="skip">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="SIVA Techno Mart home">
+        <svg viewBox="0 0 120 124" fill="none" aria-hidden="true"><path d="M86 30H52a16 16 0 0 0 0 32H68a16 16 0 0 1 0 32H34" stroke="#43D9EE" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="86" cy="30" r="9" fill="#D9B86C"/><circle cx="34" cy="94" r="9" fill="#1478D4"/></svg>
+        <span>SIVA <b>Techno Mart</b></span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#academy" data-nav="academy">AI Academy</a>
+        <a href="#vibe-coding-lab" data-nav="vibe-coding-lab">Vibe Coding Lab</a>
+        <a href="#launchpad" data-nav="launchpad">Launchpad</a>
+        <a href="#ai-solutions" data-nav="ai-solutions">AI Solutions</a>
+        <a href="#innovation-lab" data-nav="innovation-lab">Innovation Lab</a>
+        <a href="#about" data-nav="about">About</a>
+        <a class="cta" href="#contact" data-nav="contact">Contact</a>
+      </nav>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path id="menu-ico" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav id="menu" aria-label="Mobile">
+      <div class="wrap">
+        <a href="#home" data-nav="home">Home</a>
+        <a href="#academy" data-nav="academy">AI Academy</a>
+        <a href="#vibe-coding-lab" data-nav="vibe-coding-lab">Vibe Coding Lab</a>
+        <a href="#launchpad" data-nav="launchpad">Launchpad</a>
+        <a href="#ai-solutions" data-nav="ai-solutions">AI Solutions</a>
+        <a href="#innovation-lab" data-nav="innovation-lab">Innovation Lab</a>
+        <a href="#about" data-nav="about">About</a>
+        <a href="#contact" data-nav="contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- HOME -->
+    <section class="route" data-route="home" data-title="Home">
+      <div class="band clear hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">AI Academy &amp; Entrepreneurship Hub</p>
+            <h1>Don't Just Use AI. <span class="accent">Learn to Build With It.</span></h1>
+            <p class="lead">SIVA Techno Mart helps students, working professionals, career changers, small business owners and people without a programming background learn practical AI skills, build useful applications and explore entrepreneurship.</p>
+            <p class="tagline">Raising Your Skills to the Next Level with Superintelligent Tools</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#academy">Explore AI Academy</a>
+              <a class="btn btn-gold" href="#launchpad">Start Building</a>
+              <a class="btn btn-ghost" href="#ai-solutions">Explore AI Solutions</a>
+            </div>
+            <p class="chain"><b>From AI Learner to Technology Creator.</b><br><b>From Technology Creator to Entrepreneur.</b></p>
+          </div>
+          <p class="scene-hint">3D SCENE &middot; MOVE YOUR POINTER, SCROLL TO TRAVEL</p>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="wrap">
+          <div class="sec-head"><p class="eyebrow">Why SIVA</p><h2>Technology people can understand, use and build on.</h2></div>
+          <div class="grid g4" data-render="why"></div>
+        </div>
+      </div>
+
+      <div class="band alt">
+        <div class="wrap">
+          <div class="sec-head"><p class="eyebrow">AI Academy</p><h2>Proposed courses for everyday professionals who want to become technology creators.</h2><p>Courses are a planned offering. Dates, delivery format, instructors and pricing are not confirmed yet.</p></div>
+          <div class="grid g3" data-render="courses"></div>
+          <div class="cta-row"><a class="btn btn-primary" href="#academy">See the Academy</a></div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="wrap">
+          <div class="sec-head"><p class="eyebrow">Vibe Coding Lab</p><h2>Describe what you want. Review what comes back. Refine it.</h2><p>Vibe coding means building software by describing it in plain language and guiding an AI coding assistant. The Lab explains each step with a worked example.</p></div>
+          <div class="panel stack">
+            <p class="muted">Example prompt</p>
+            <p class="promptbox">Make a simple page where I enter a restaurant bill and the number of people, and it shows what each person pays, with an optional tip.</p>
+            <div class="card-foot"><a class="btn btn-primary" href="#vibe-coding-lab">Open the Vibe Coding Lab</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band alt">
+        <div class="wrap">
+          <div class="sec-head"><p class="eyebrow">Entrepreneurship Launchpad</p><h2>From a problem worth solving to a first launch.</h2></div>
+          <ol class="journey" data-render="journey"></ol>
+          <div class="cta-row"><a class="btn btn-gold" href="#launchpad">Start Building</a></div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="wrap">
+          <div class="sec-head"><p class="eyebrow">Featured AI applications</p><h2>FamilyBuddy AI and KinKeep</h2><p>Independent applications that this site links to. We do not rebuild or modify them here.</p></div>
+          <div class="grid g2" data-render="products"></div>
+        </div>
+      </div>
+
+      <div class="band alt">
+        <div class="wrap">
+          <div class="sec-head"><p class="eyebrow">Innovation Lab</p><h2>Engineering, science and financial ideas under exploration.</h2></div>
+          <div class="notice"><strong>Experimental.</strong> Nothing in the Lab is a product available today.</div>
+          <div class="grid g3" style="margin-top:18px" data-render="lab"></div>
+          <div class="cta-row"><a class="btn btn-ghost" href="#innovation-lab">Visit the Innovation Lab</a></div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="wrap">
+          <div class="sec-head"><p class="eyebrow">Founder vision &amp; mission</p><h2>Make advanced technology accessible to people without a computer science background.</h2></div>
+          <div class="grid g2">
+            <div class="panel"><h3>Mission</h3><p style="margin-top:10px">Empowering everyday professionals to become technology creators.</p></div>
+            <div class="panel"><h3>Founder</h3><p class="placeholder" style="margin-top:12px">Founder introduction to be added by the site owner. Name, background and vision are intentionally left blank.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band alt">
+        <div class="wrap">
+          <div class="grid g2" style="align-items:start">
+            <div class="sec-head" style="margin-bottom:0"><p class="eyebrow">Training inquiry &amp; collaboration</p><h2>Ask about courses, demonstrations or working together.</h2><p>Tell us what you have in mind and we will use your details only to reply.</p></div>
+            <div class="panel" data-form="inquiry" data-prefix="h"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="wrap">
+          <div class="sec-head"><p class="eyebrow">FAQ</p><h2>Common questions</h2></div>
+          <div data-render="faq"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACADEMY -->
+    <section class="route" data-route="academy" data-title="AI Academy" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">SIVA AI Academy</p>
+        <h1 tabindex="-1">From AI learner to technology creator.</h1>
+        <p class="lead">Practical learning for people with little or no programming experience. Each course below is a proposal with a template for audience, prerequisites, outcomes and curriculum.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="notice" style="margin-bottom:24px"><strong>Planned offering.</strong> We have not confirmed course dates, prices, certifications or instructors, and none are promised on this site.</div>
+        <div class="grid g3" data-render="courses"></div>
+      </div></div>
+      <div class="band alt"><div class="wrap">
+        <div class="sec-head"><p class="eyebrow">Also under consideration</p><h2>Further pathways we may develop</h2></div>
+        <div class="grid g3" data-render="morepaths"></div>
+      </div></div>
+    </section>
+
+    <!-- VIBE CODING LAB -->
+    <section class="route" data-route="vibe-coding-lab" data-title="Vibe Coding Lab" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">Vibe Coding Lab</p>
+        <h1 tabindex="-1">Build software by describing it.</h1>
+        <p class="lead">Vibe coding is building an application by explaining what you want in plain language and guiding an AI coding assistant through changes. You do not need to write code, but you do need to check the result.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="notice" style="margin-bottom:24px"><strong>Illustrative example.</strong> The prompt and the small tool below were prepared in advance to show the idea. This page does not call any AI service.</div>
+        <div class="demo">
+          <div class="panel">
+            <div role="tablist" aria-label="Vibe coding steps" id="lab-tabs"></div>
+            <div id="lab-panel" role="tabpanel" tabindex="0"></div>
+          </div>
+          <div class="sample" aria-label="Example result: bill splitter">
+            <p class="eyebrow" style="margin:0">Example result</p>
+            <h3>Bill splitter</h3>
+            <div class="row"><label for="lab-bill">Bill total ($)</label><input id="lab-bill" type="number" min="0" step="0.01" value="86.40" inputmode="decimal"></div>
+            <div class="row"><label for="lab-people">People</label><input id="lab-people" type="number" min="1" step="1" value="4" inputmode="numeric"></div>
+            <div class="row"><span id="tip-label" style="font-weight:600;font-size:.92rem">Tip</span>
+              <div class="seg" role="group" aria-labelledby="tip-label" id="lab-tip">
+                <button type="button" data-tip="0" aria-pressed="false">None</button>
+                <button type="button" data-tip="10" aria-pressed="false">10%</button>
+                <button type="button" data-tip="15" aria-pressed="true">15%</button>
+                <button type="button" data-tip="20" aria-pressed="false">20%</button>
+              </div>
+            </div>
+            <div class="row"><span class="muted">Each person pays</span><output id="lab-out" for="lab-bill lab-people lab-tip" aria-live="polite">$0.00</output></div>
+          </div>
+        </div>
+      </div></div>
+      <div class="band alt"><div class="wrap">
+        <div class="sec-head"><p class="eyebrow">Learn it properly</p><h2>The Academy teaches this step by step.</h2></div>
+        <div class="cta-row" style="margin-top:0"><a class="btn btn-primary" href="#academy-vibe-coding">View the Vibe Coding course</a><a class="btn btn-ghost" href="#launchpad">Turn an idea into a prototype</a></div>
+      </div></div>
+    </section>
+
+    <!-- LAUNCHPAD -->
+    <section class="route" data-route="launchpad" data-title="Entrepreneurship Launchpad" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">Entrepreneurship Launchpad</p>
+        <h1 tabindex="-1">You don't need to be a programmer to start building.</h1>
+        <p class="lead">The Launchpad is a path from spotting a problem to releasing a first version (an MVP) and learning from real users.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="sec-head"><p class="eyebrow">The journey</p><h2>Discover. Learn. Build. Validate. Launch. Grow.</h2></div>
+        <ol class="journey" data-render="journey"></ol>
+      </div></div>
+      <div class="band alt"><div class="wrap">
+        <div class="sec-head"><p class="eyebrow">Who it is for</p><h2>Anyone with a problem worth solving.</h2></div>
+        <div class="grid g3" data-render="audiences"></div>
+        <div class="sec-head" style="margin-top:44px"><p class="eyebrow">Proposed support</p><h2>Services we are planning</h2><p>These are proposed services and are not yet confirmed.</p></div>
+        <div class="grid g3" data-render="services"></div>
+        <p class="notice" style="margin-top:28px"><strong>No guarantees.</strong> We do not promise employment, income, business success or certification.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="grid g2" style="align-items:start">
+          <div class="sec-head" style="margin-bottom:0"><p class="eyebrow">Share your idea</p><h2>Tell us what you would like to build.</h2><p>Your idea is read by people at SIVA Techno Mart. It is not sent to any AI service or third party.</p></div>
+          <div class="panel" data-form="idea" data-prefix="i"></div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- AI SOLUTIONS -->
+    <section class="route" data-route="ai-solutions" data-title="AI Solutions" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">AI Solutions</p>
+        <h1 tabindex="-1">Applications you can open today or follow as they grow.</h1>
+        <p class="lead">FamilyBuddy AI and KinKeep are independently hosted applications. This site links to them and does not modify, duplicate or rebuild them.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="grid g2" data-render="products"></div>
+        <div class="panel stack" style="margin-top:28px">
+          <h3>What the status labels mean</h3>
+          <ul class="tick">
+            <li><b>Available</b>: ready to use.</li>
+            <li><b>Beta</b>: usable, still being tested and improved.</li>
+            <li><b>Prototype</b>: an early working version.</li>
+            <li><b>Coming Soon</b>: announced, not yet usable.</li>
+          </ul>
+          <p class="muted">Statuses and links come from the product list in this page's configuration block, supplied by the site administrator.</p>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- INNOVATION LAB -->
+    <section class="route" data-route="innovation-lab" data-title="Innovation Lab" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">Engineering, Science &amp; Financial Innovation Lab</p>
+        <h1 tabindex="-1">Where we test ideas before they become products.</h1>
+        <p class="lead">Concepts here are experiments. They help us learn what AI can do in engineering, science and finance.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="notice" style="margin-bottom:24px"><strong>Experimental.</strong> Nothing on this page is a product available today. Financial concepts are educational scenario exploration only and are not financial advice.</div>
+        <div class="grid g3" data-render="lab"></div>
+      </div></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="route" data-route="about" data-title="About" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">About SIVA Techno Mart</p>
+        <h1 tabindex="-1">Smart Intelligent Virtual Agents.</h1>
+        <p class="lead">SIVA stands for Smart Intelligent Virtual Agents. Our aim is to make advanced technology accessible to everyone, including people without formal computer science education.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="grid g2">
+          <div class="panel stack"><h3>Mission</h3><p>Empowering everyday professionals to become technology creators.</p><p class="muted">Core message: From AI Learner to Technology Creator. From Technology Creator to Entrepreneur.</p></div>
+          <div class="panel stack"><h3>Responsible technology</h3><p>We promote privacy, security, transparency and human oversight. We do not make claims about credentials, partnerships, customer numbers or results that we cannot verify.</p></div>
+        </div>
+      </div></div>
+      <div class="band alt"><div class="wrap">
+        <div class="sec-head"><p class="eyebrow">Values</p><h2>What guides the work</h2></div>
+        <div class="grid g4" data-render="why"></div>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="grid g2">
+          <div class="panel stack"><h3>Founder</h3>
+            <p class="placeholder">Founder name, professional background and technology vision to be added by the site owner.</p></div>
+          <div class="panel stack"><h3>Team</h3>
+            <p class="placeholder">Team members to be added by the site owner.</p></div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="route" data-route="contact" data-title="Contact" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">Contact</p>
+        <h1 tabindex="-1">Training inquiries and collaboration.</h1>
+        <p class="lead">Ask about courses, request a demonstration or start a conversation about working together.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="grid g2" style="align-items:start">
+          <div class="panel" data-form="inquiry" data-prefix="c"></div>
+          <div class="panel stack">
+            <h3>How your message is handled</h3>
+            <p>We use the details you submit only to reply to your enquiry. Read the <a href="#privacy">privacy placeholder</a> and <a href="#terms">terms placeholder</a>.</p>
+            <p class="placeholder">Business email and mailing address to be added by the site owner.</p>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section class="route" data-route="privacy" data-title="Privacy Policy" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">Legal placeholder</p>
+        <h1 tabindex="-1">Privacy Policy</h1>
+        <p class="lead">This page is a placeholder and has not been reviewed by a lawyer. Replace it with reviewed text before launch.</p>
+      </div></div>
+      <div class="band"><div class="wrap"><div class="panel stack">
+        <h3>Points the final policy should cover</h3>
+        <ul class="tick"><li>What personal information the contact, inquiry and idea forms collect.</li><li>How long it is kept and who can see it.</li><li>Which service stores or emails form submissions.</li><li>Analytics and cookies, if any are added.</li><li>How people can ask for their information to be corrected or deleted.</li></ul>
+      </div></div></div>
+    </section>
+
+    <!-- TERMS -->
+    <section class="route" data-route="terms" data-title="Terms of Use" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">Legal placeholder</p>
+        <h1 tabindex="-1">Terms of Use</h1>
+        <p class="lead">This page is a placeholder and has not been reviewed by a lawyer. Replace it with reviewed text before launch.</p>
+      </div></div>
+      <div class="band"><div class="wrap"><div class="panel stack">
+        <h3>Points the final terms should cover</h3>
+        <ul class="tick"><li>Educational content is not professional, financial, legal or medical advice.</li><li>Courses are a planned offering until dates, delivery and pricing are confirmed.</li><li>No guarantee of employment, income, business success or certification.</li><li>Third-party applications are independently hosted and governed by their own terms.</li></ul>
+      </div></div></div>
+    </section>
+
+    <div id="course-host"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <p style="font-family:var(--font-display);font-weight:700;color:var(--cloud);font-size:1.1rem">SIVA Techno Mart</p>
+          <p style="margin-top:6px">Smart Intelligent Virtual Agents</p>
+          <p style="margin-top:12px;color:var(--gold)">Raising Your Skills to the Next Level with Superintelligent Tools</p>
+        </div>
+        <div><h3>Learn</h3><ul><li><a href="#academy">AI Academy</a></li><li><a href="#vibe-coding-lab">Vibe Coding Lab</a></li><li><a href="#academy-ai-foundations">AI Foundations</a></li></ul></div>
+        <div><h3>Build</h3><ul><li><a href="#launchpad">Launchpad</a></li><li><a href="#ai-solutions">AI Solutions</a></li><li><a href="#innovation-lab">Innovation Lab</a></li></ul></div>
+        <div><h3>Company</h3><ul><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#terms">Terms</a></li></ul></div>
+      </div>
+      <div class="fine">
+        <p>Educational content only. Nothing on this site is financial, legal or medical advice, and nothing here promises employment, income, business success or certification.</p>
+        <p>&copy; SIVA Techno Mart</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ============ CONFIGURATION (edit here; no other code changes needed) ============ */
+var CONFIG = {
+  // URL of a form service (for example a Formspree endpoint) that accepts a JSON POST.
+  // While empty, forms validate but honestly report that nothing was sent.
+  formEndpoint: ''
+};
+
+// status must be one of: 'Available', 'Beta', 'Prototype', 'Coming Soon'
+var PRODUCTS = [
+  { name:'FamilyBuddy AI', status:'Beta', url:'https://buddyhubfamily.lovable.app/',
+    blurb:'A family of practical AI assistants for everyday life. Opens the independently hosted FamilyBuddy AI application.' },
+  { name:'KinKeep', status:'Coming Soon', url:'',
+    blurb:'Family preparedness, important document organization and legacy planning. The link will be added once the application address is configured.' }
+];
+
+var COURSES = [
+  { slug:'ai-foundations', title:'AI Foundations',
+    short:'Understand what AI is, what it does well and where it falls short, in plain language.',
+    overview:'A beginner-friendly introduction to artificial intelligence. You learn how modern AI assistants work, how to use them for everyday tasks, and how to judge their answers critically.',
+    audience:['Anyone curious about AI, with no technical background','Students and career changers','Professionals who want to use AI tools at work'],
+    prereq:['None. You should be comfortable using a web browser.'],
+    outcomes:['Explain core AI ideas in everyday language','Use an AI assistant for writing, research and planning','Recognize common mistakes, bias and privacy risks','Decide when a task suits AI and when it does not'],
+    curriculum:[['What AI is and is not','Machine learning, language models and agents, explained without jargon.'],['Working with AI assistants','Asking clear questions and refining answers.'],['Checking AI output','Fact-checking, spotting errors and avoiding over-trust.'],['Privacy and safety basics','What not to share, and why.'],['AI for everyday tasks','Practical workflows for home, study and work.'],['Next steps','Choosing what to learn after the foundations.']] },
+  { slug:'vibe-coding', title:'Vibe Coding',
+    short:'Build working applications by describing them and guiding AI coding tools, without traditional programming.',
+    overview:'Learn to create small applications by explaining what you want in plain language, reviewing what an AI coding assistant produces, and improving it step by step.',
+    audience:['Non-programmers who want to build tools and websites','Small business owners','Aspiring entrepreneurs with an application idea'],
+    prereq:['Basic computer skills','AI Foundations is helpful but not required'],
+    outcomes:['Describe an application clearly enough for AI tools to build a first version','Test and review AI-generated results','Request focused improvements and fixes','Understand basic security habits when building with AI'],
+    curriculum:[['Describing what you want','Turning an idea into a clear written brief.'],['Generating a first version','Working with an AI coding assistant.'],['Testing and reviewing','Checking behavior, edge cases and accessibility.'],['Refining with follow-up prompts','Making precise changes without breaking what works.'],['Keeping secrets and data safe','Passwords, keys and personal information.'],['Publishing a small project','Sharing your first application.']] },
+  { slug:'entrepreneurship', title:'From Technology Creator to Entrepreneur',
+    short:'Turn something you have built into a focused product idea and plan responsible next steps.',
+    overview:'For learners who have started building and want to explore entrepreneurship: finding a real problem, testing it with real people, and shaping a minimum viable product.',
+    audience:['Aspiring entrepreneurs','Career changers exploring product ideas','Small business owners adding a digital product'],
+    prereq:['An idea or an early prototype, though neither is required to begin','Vibe Coding is helpful but not required'],
+    outcomes:['Describe a problem and who has it','Plan simple ways to test demand with real users','Scope a minimum viable product','Outline responsible next steps for launch and growth'],
+    curriculum:[['Finding a problem worth solving','Looking for real needs rather than clever features.'],['Talking to potential users','Simple, honest ways to learn what people need.'],['Scoping an MVP','Deciding what the first version must and must not include.'],['Validating with a prototype','Gathering feedback and deciding what to change.'],['Launch checklist','Practical steps before releasing a first version.'],['Growing responsibly','Support, privacy and human oversight as you scale.']] }
+];
+var MOREPATHS = [
+  ['Prompt Engineering Essentials','Giving clear instructions to AI tools for reliable results.'],
+  ['Building Websites with AI','Planning, creating and publishing a simple website.'],
+  ['Creating AI Agents and Chatbots','Designing focused assistants with sensible limits.'],
+  ['Business Automation with AI','Finding repetitive tasks and automating them with people in the loop.'],
+  ['Launching and Managing a Digital Product','Releasing, supporting and improving a product.'],
+  ['AI Safety, Security and Responsible Development','Privacy, security and human oversight habits.']
+];
+var JOURNEY = [
+  ['Discover','Spot a real problem worth solving, ideally one you or people around you face.'],
+  ['Learn','Pick up the AI tools and habits you need, at your own pace.'],
+  ['Build','Turn the idea into a first working prototype with AI-assisted development.'],
+  ['Validate','Put the prototype in front of real users and listen to what they say.'],
+  ['Launch','Release a focused minimum viable product (MVP).'],
+  ['Grow','Improve, support and expand responsibly, with privacy and human oversight.']
+];
+var AUDIENCES = ['Nontechnical professionals','Students and career changers','Small business owners','Homemakers with business ideas','Aspiring entrepreneurs','Retired professionals exploring technology'];
+var SERVICES = ['Idea discovery workshops','AI-powered prototype guidance','Website and app creation guidance','Product validation','Automation consulting','Entrepreneurship mentoring'];
+var WHY = [
+  ['Accessible Intelligence','Making AI understandable and useful for everyone.','<circle cx="17" cy="17" r="12"/><circle cx="17" cy="17" r="4"/>'],
+  ['Practical Innovation','Building tools that address real-world problems.','<path d="M17 3l12 7v14l-12 7L5 24V10z"/><path d="M17 12v10M12 15l5-3 5 3"/>'],
+  ['Continuous Learning','Encouraging people to learn new technology skills throughout their careers.','<path d="M4 8c5-2 9-2 13 1 4-3 8-3 13-1v18c-5-2-9-2-13 1-4-3-8-3-13-1z"/><path d="M17 9v18"/>'],
+  ['Responsible Technology','Promoting privacy, security, transparency and human oversight.','<path d="M17 3l11 4v9c0 7-5 12-11 15C11 28 6 23 6 16V7z"/><path d="M12 16l4 4 6-7"/>']
+];
+var LAB = [
+  ['Engineering','Concepts for AI-assisted engineering productivity, intelligent workflow automation and multi-agent orchestration.'],
+  ['Science','Concepts for scientific visualization, educational simulations and practical research experiments.'],
+  ['Financial','Educational financial scenario exploration and data analytics. Not financial advice.']
+];
+var FAQ = [
+  ['Do I need to know how to program?','No. The Academy is designed for people with little or no programming experience.'],
+  ['Are courses open for enrollment?','Not yet. Course dates, delivery format, instructors and pricing have not been confirmed. Use the inquiry form to ask to be told when they are.'],
+  ['Will I receive a certificate?','No certification is offered or promised at this stage.'],
+  ['Do you give financial advice?','No. Financial content on this site is educational only and is not individualized or regulated financial advice.'],
+  ['What happens to an idea I submit?','Ideas are not sent to any AI service or third party. Right now the forms are not connected to a submission service, so nothing is stored or sent until that connection is made.'],
+  ['Are FamilyBuddy AI and KinKeep part of this site?','They are separate, independently hosted applications. This site links to them and does not modify or rebuild them.'],
+  ['Can you promise income or business success?','No. We do not promise employment, income or business success.']
+];
+
+/* ============ helpers ============ */
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+/* ============ renderers ============ */
+var R = {
+  why:function(){return WHY.map(function(w){return '<article class="panel tilt"><svg class="icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+w[2]+'</svg><h3>'+w[0]+'</h3><p style="margin-top:8px">'+w[1]+'</p></article>';}).join('');},
+  courses:function(){return COURSES.map(function(c){return '<article class="panel tilt"><span class="chip">Planned offering</span><h3 style="margin-top:14px">'+c.title+'</h3><p style="margin-top:8px">'+c.short+'</p><div class="card-foot"><a class="link-arrow" href="#academy-'+c.slug+'">Course details</a></div></article>';}).join('');},
+  morepaths:function(){return MOREPATHS.map(function(p){return '<article class="panel"><h3>'+p[0]+'</h3><p style="margin-top:8px">'+p[1]+'</p></article>';}).join('');},
+  journey:function(){return JOURNEY.map(function(j){return '<li><h3>'+j[0]+'</h3><p>'+j[1]+'</p></li>';}).join('');},
+  audiences:function(){return AUDIENCES.map(function(a){return '<div class="panel"><h3>'+a+'</h3></div>';}).join('');},
+  services:function(){return SERVICES.map(function(a){return '<div class="panel"><h3>'+a+'</h3><p style="margin-top:8px"><span class="chip">Proposed</span></p></div>';}).join('');},
+  products:function(){return PRODUCTS.map(function(p){
+    var action = p.url
+      ? '<a class="btn btn-primary" href="'+esc(p.url)+'" target="_blank" rel="noopener noreferrer">Open '+p.name+'</a>'
+      : '<span class="chip">Link not configured yet</span>';
+    return '<article class="panel tilt"><div class="card-top"><h3>'+p.name+'</h3><span class="badge" data-s="'+p.status+'">'+p.status+'</span></div><p>'+p.blurb+'</p><div class="card-foot">'+action+'<a class="link-arrow" href="#contact" data-prefill="Product demonstration" data-topic="'+p.name+'">Request a demonstration</a></div></article>';}).join('');},
+  lab:function(){return LAB.map(function(l){return '<article class="panel tilt"><div class="card-top"><h3>'+l[0]+'</h3><span class="badge" data-s="Experimental">Experimental concept</span></div><p>'+l[1]+'</p></article>';}).join('');},
+  faq:function(){return FAQ.map(function(f){return '<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>';}).join('');}
+};
+$$('[data-render]').forEach(function(el){var f=R[el.getAttribute('data-render')]; if(f) el.innerHTML=f();});
+
+/* course pages */
+function list(a){return '<ul class="tick">'+a.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';}
+var host=$('#course-host');
+COURSES.forEach(function(c){
+  var s=document.createElement('section');
+  s.className='route'; s.setAttribute('data-route','academy-'+c.slug); s.setAttribute('data-title',c.title); s.hidden=true;
+  s.innerHTML =
+   '<div class="band clear pagehead"><div class="wrap"><a class="crumb" href="#academy">&larr; All courses</a><p class="eyebrow">Proposed course</p><h1 tabindex="-1">'+c.title+'</h1><p class="lead">'+c.short+'</p></div></div>'+
+   '<div class="band"><div class="wrap course-grid"><div class="course-main">'+
+     '<div><h2>Course overview</h2><p style="color:#CBD7EA;max-width:65ch">'+c.overview+'</p></div>'+
+     '<div><h2>Intended audience</h2>'+list(c.audience)+'</div>'+
+     '<div><h2>Prerequisites</h2>'+list(c.prereq)+'</div>'+
+     '<div><h2>Learning outcomes</h2>'+list(c.outcomes)+'</div>'+
+     '<div><h2>Proposed curriculum</h2><ol class="curr">'+c.curriculum.map(function(m){return '<li><b>'+m[0]+'</b><span>'+m[1]+'</span></li>';}).join('')+'</ol></div>'+
+     '<div><h2>Delivery format</h2><p class="placeholder">Delivery format, schedule, duration and pricing are not confirmed. This is a planned offering.</p></div>'+
+   '</div><aside class="aside">'+
+     '<div class="panel stack"><h3>Instructor</h3><p class="placeholder">Instructor name and background to be added once confirmed.</p></div>'+
+     '<div class="panel stack"><h3>Interested?</h3><p>Send an enrollment inquiry and we will reply when details are confirmed. No dates, prices or certificates are promised.</p><a class="btn btn-primary" href="#contact" data-prefill="Training inquiry" data-topic="'+c.title+'">Enrollment inquiry</a></div>'+
+   '</aside></div></div>';
+  host.appendChild(s);
+});
+
+/* ============ forms ============ */
+var INTERESTS=['Training inquiry','Collaboration','Product demonstration','Entrepreneurship mentoring','Other'];
+var ASSIST=['Idea discovery','Prototype guidance','Validating the idea with users','Learning the skills to build it myself','Not sure yet'];
+function fld(p,id,label,control){return '<div class="field"><label for="'+p+'-'+id+'">'+label+'</label>'+control+'<p class="err" id="'+p+'-'+id+'-err" hidden></p></div>';}
+function opts(a){return '<option value="">Select&hellip;</option>'+a.map(function(x){return '<option>'+x+'</option>';}).join('');}
+function formHTML(p,kind){
+  var common = fld(p,'name','Name','<input type="text" id="'+p+'-name" name="name" autocomplete="name">')+
+               fld(p,'email','Email','<input type="email" id="'+p+'-email" name="email" autocomplete="email">');
+  var body = kind==='idea'
+    ? fld(p,'title','Idea in one line','<input type="text" id="'+p+'-title" name="title">')+
+      fld(p,'message','Describe your idea','<textarea id="'+p+'-message" name="message"></textarea>')+
+      fld(p,'assist','Type of assistance requested','<select id="'+p+'-assist" name="assist">'+opts(ASSIST)+'</select>')
+    : fld(p,'interest','I am interested in','<select id="'+p+'-interest" name="interest">'+opts(INTERESTS)+'</select>')+
+      fld(p,'message','Message','<textarea id="'+p+'-message" name="message"></textarea>');
+  var consentText = kind==='idea'
+    ? 'I agree that SIVA Techno Mart may use these details to reply to me. I understand my idea is not sent to any AI service.'
+    : 'I agree that SIVA Techno Mart may use these details to reply to me.';
+  return '<form novalidate data-kind="'+kind+'" data-p="'+p+'">'+common+body+
+    '<div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" tabindex="-1" autocomplete="off" id="'+p+'-website" name="website"></label></div>'+
+    '<div class="field"><label class="check" for="'+p+'-consent"><input type="checkbox" id="'+p+'-consent" name="consent"><span>'+consentText+'</span></label><p class="err" id="'+p+'-consent-err" hidden></p></div>'+
+    '<button class="btn btn-primary" type="submit">'+(kind==='idea'?'Submit my idea':'Send inquiry')+'</button>'+
+    '<div class="status" id="'+p+'-status" role="status" aria-live="polite"></div></form>';
+}
+$$('[data-form]').forEach(function(h){h.innerHTML=formHTML(h.getAttribute('data-prefix'),h.getAttribute('data-form'));});
+
+function setErr(form,p,id,msg){
+  var inp=$('#'+p+'-'+id,form), er=$('#'+p+'-'+id+'-err',form);
+  if(!er) return;
+  if(msg){er.textContent=msg;er.hidden=false;if(inp){inp.setAttribute('aria-invalid','true');inp.setAttribute('aria-describedby',p+'-'+id+'-err');}}
+  else{er.textContent='';er.hidden=true;if(inp){inp.removeAttribute('aria-invalid');inp.removeAttribute('aria-describedby');}}
+}
+function copyText(txt,ta,btn){
+  function fallback(){ta.focus();ta.select();btn.textContent='Selected. Press Ctrl+C or Cmd+C to copy.';}
+  try{ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){btn.textContent='Copied';},fallback);} else fallback(); }
+  catch(e){fallback();}
+}
+document.addEventListener('submit',function(e){
+  var form=e.target; if(!form.matches||!form.matches('form[data-p]')) return;
+  e.preventDefault();
+  var p=form.getAttribute('data-p'), kind=form.getAttribute('data-kind'), status=$('#'+p+'-status',form);
+  if($('#'+p+'-website',form).value){return;} // honeypot: stay silent for bots
+  var v=function(id){var el=$('#'+p+'-'+id,form);return el?el.value.trim():'';};
+  var errs={}, order=[];
+  function need(id,cond,msg){setErr(form,p,id,cond?null:msg); if(!cond){errs[id]=msg;order.push(id);}}
+  need('name',v('name').length>=2,'Enter your name.');
+  need('email',/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email')),'Enter a valid email address, like name@example.com.');
+  if(kind==='idea'){need('title',v('title').length>=3,'Give your idea a short title.');need('assist',!!v('assist'),'Choose the type of assistance you would like.');}
+  else need('interest',!!v('interest'),'Choose what you are interested in.');
+  need('message',v('message').length>=10,'Write at least a sentence (10 characters or more).');
+  need('consent',$('#'+p+'-consent',form).checked,'Tick the box so we know we may reply to you.');
+  if(order.length){status.innerHTML='<div class="bad">Please fix '+order.length+' field'+(order.length>1?'s':'')+' above.</div>';var f=$('#'+p+'-'+order[0],form);if(f)f.focus();return;}
+  var payload={kind:kind,name:v('name'),email:v('email'),message:v('message')};
+  if(kind==='idea'){payload.title=v('title');payload.assistance=v('assist');}else payload.interest=v('interest');
+  if(!CONFIG.formEndpoint){
+    var txt=Object.keys(payload).map(function(k){return k+': '+payload[k];}).join('\n');
+    status.innerHTML='<div class="notice"><strong>Not sent.</strong> This site is not connected to a submission service yet, so your message has not gone anywhere and nothing has been stored. You can copy it and send it another way once the owner adds a contact address.</div><textarea readonly aria-label="Your message, ready to copy"></textarea><button type="button" class="btn btn-ghost">Copy my message</button>';
+    var ta=$('textarea',status), btn=$('button',status); ta.value=txt; btn.addEventListener('click',function(){copyText(txt,ta,btn);});
+    return;
+  }
+  status.innerHTML='<div class="notice">Sending&hellip;</div>';
+  fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){if(!r.ok)throw new Error('bad status');form.reset();status.innerHTML='<div class="ok">Thank you. Your message was sent.</div>';})
+    .catch(function(){status.innerHTML='<div class="bad">Your message could not be sent. Please try again later.</div>';});
+});
+
+/* prefill from "Enrollment inquiry" / "Request a demonstration" links */
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('[data-prefill]'); if(!a) return;
+  var sel=$('#c-interest'), msg=$('#c-message');
+  if(sel) sel.value=a.getAttribute('data-prefill');
+  if(msg&&!msg.value) msg.value='I am interested in: '+a.getAttribute('data-topic')+'\n\n';
+});
+
+/* ============ Vibe Coding Lab demo ============ */
+var STEPS=[
+ ['1. Describe','Write what you want in plain language, with the details that matter.',
+  '<p class="promptbox">Make a simple page where I enter a restaurant bill and the number of people, and it shows what each person pays, with an optional tip.</p><p class="muted" style="margin-top:12px">Good descriptions name the inputs, the result and any choices the user can make.</p>'],
+ ['2. Generate','An AI coding assistant turns the description into a first working version.',
+  '<p>The tool on the right is that kind of first version. It was prepared in advance for this page; no AI service runs here.</p><p class="muted" style="margin-top:12px">Expect a useful start, not a finished product.</p>'],
+ ['3. Review','You check the result. The assistant does not know what you meant to ask.',
+  '<ul class="tick"><li>Does it do what you described?</li><li>Try odd inputs: zero people, an empty bill.</li><li>Can it be used with a keyboard and read by a screen reader?</li><li>Does it ask for or store anything private?</li></ul>'],
+ ['4. Refine','Ask for one focused change at a time and test again.',
+  '<p class="promptbox">Round each share to the nearest cent, and show a clear message if the number of people is zero.</p><p class="promptbox">Add quick tip buttons for 10%, 15% and 20%.</p>']
+];
+var tabs=$('#lab-tabs'), panel=$('#lab-panel');
+STEPS.forEach(function(s,i){
+  var b=document.createElement('button'); b.type='button'; b.setAttribute('role','tab'); b.id='lab-tab-'+i; b.setAttribute('aria-controls','lab-panel'); b.textContent=s[0];
+  b.addEventListener('click',function(){pickStep(i,true);});
+  b.addEventListener('keydown',function(e){var n=i; if(e.key==='ArrowRight')n=(i+1)%STEPS.length; else if(e.key==='ArrowLeft')n=(i+STEPS.length-1)%STEPS.length; else return; e.preventDefault(); pickStep(n,true);});
+  tabs.appendChild(b);
+});
+function pickStep(i,focus){
+  $$('[role=tab]',tabs).forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1;if(j===i&&focus)b.focus();});
+  panel.setAttribute('aria-labelledby','lab-tab-'+i);
+  panel.innerHTML='<h3 style="margin-bottom:8px">'+STEPS[i][0].slice(3)+'</h3><p>'+STEPS[i][1]+'</p><div style="margin-top:14px">'+STEPS[i][2]+'</div>';
+}
+pickStep(0,false);
+var tipPct=15;
+function calc(){
+  var bill=parseFloat($('#lab-bill').value), n=parseInt($('#lab-people').value,10), out=$('#lab-out');
+  if(!(bill>=0)||!(n>=1)){out.textContent='Enter a bill and at least 1 person';out.style.fontSize='1rem';return;}
+  out.style.fontSize='';
+  out.textContent='$'+(Math.round(bill*(1+tipPct/100)/n*100)/100).toFixed(2);
+}
+$('#lab-bill').addEventListener('input',calc); $('#lab-people').addEventListener('input',calc);
+$('#lab-tip').addEventListener('click',function(e){var b=e.target.closest('button[data-tip]'); if(!b)return; tipPct=+b.getAttribute('data-tip'); $$('button',this).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');}); calc();});
+calc();
+
+/* ============ 3D card tilt (mouse only, off for reduced motion) ============ */
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){
+  var lastTilt=null;
+  function clearTilt(){if(lastTilt){lastTilt.style.removeProperty('--rx');lastTilt.style.removeProperty('--ry');lastTilt=null;}}
+  document.addEventListener('pointermove',function(e){
+    if(e.pointerType!=='mouse') return;
+    var c=e.target.closest&&e.target.closest('.tilt');
+    if(c!==lastTilt) clearTilt();
+    if(!c) return;
+    var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    c.style.setProperty('--ry',(x*8).toFixed(2)+'deg'); c.style.setProperty('--rx',(-y*8).toFixed(2)+'deg'); lastTilt=c;
+  });
+  document.addEventListener('pointerleave',clearTilt);
+}
+
+/* ============ router ============ */
+var routes={}; $$('.route').forEach(function(s){routes[s.getAttribute('data-route')]=s;});
+var menuBtn=$('#menu-btn'), menu=$('#menu');
+function closeMenu(){menu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.setAttribute('aria-label','Open menu');document.body.classList.remove('menu-open');$('#menu-ico').setAttribute('d','M4 7h16M4 12h16M4 17h16');}
+menuBtn.addEventListener('click',function(){
+  var open=!menu.classList.contains('open');
+  menu.classList.toggle('open',open);menuBtn.setAttribute('aria-expanded',String(open));menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+  document.body.classList.toggle('menu-open',open);$('#menu-ico').setAttribute('d',open?'M6 6l12 12M18 6L6 18':'M4 7h16M4 12h16M4 17h16');
+});
+$('#skip').addEventListener('click',function(e){e.preventDefault();$('#main').focus();});
+var first=true;
+function route(){
+  var h=(location.hash||'').replace(/^#/,''); var r=routes[h]?h:'home';
+  Object.keys(routes).forEach(function(k){routes[k].hidden=(k!==r);});
+  var navKey=r.indexOf('academy-')===0?'academy':r;
+  $$('[data-nav]').forEach(function(a){if(a.getAttribute('data-nav')===navKey)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+  document.title=(r==='home'?'SIVA Techno Mart':routes[r].getAttribute('data-title')+' | SIVA Techno Mart');
+  closeMenu(); window.scrollTo(0,0);
+  if(!first){var h1=$('h1',routes[r]); if(h1)h1.focus({preventScroll:true});}
+  first=false;
+  if(window.__stage) window.__stage.setMode(r);
+}
+window.addEventListener('hashchange',route);
+
+/* ============ 3D scene ============ */
+(function init3D(){
+  var html=document.documentElement, T=window.THREE, canvas=$('#stage');
+  if(!T||!canvas){html.classList.add('no3d');return;}
+  var renderer;
+  try{renderer=new T.WebGLRenderer({canvas:canvas,antialias:true,alpha:true,powerPreference:'low-power'});}
+  catch(err){html.classList.add('no3d');return;}
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.setClearColor(0x000000,0);
+  var scene=new T.Scene(), camera=new T.PerspectiveCamera(55,1,0.1,100);
+  camera.position.set(0,0.3,12);
+  var CYAN=0x43D9EE,BLUE=0x1478D4,GOLD=0xD9B86C;
+  var seed=7; function rnd(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}
+  var G={net:new T.Group(),core:new T.Group(),path:new T.Group(),lab:new T.Group()};
+  Object.keys(G).forEach(function(k){scene.add(G[k]);});
+  var reg={net:[],core:[],path:[],lab:[]};
+  function track(n,m){reg[n].push({m:m,o:m.opacity});return m;}
+  var fade={net:0,core:0,path:0,lab:0}, target={net:0,core:0,path:0,lab:0};
+
+  /* neural lattice */
+  var N=150,pts=[],i,j;
+  for(i=0;i<N;i++){var v;do{v=[(rnd()*2-1)*10,(rnd()*2-1)*6.5,(rnd()*2-1)*9];}while(v[0]*v[0]/100+v[1]*v[1]/42+v[2]*v[2]/81>1);pts.push(v);}
+  var np=new Float32Array(N*3);for(i=0;i<N;i++){np[i*3]=pts[i][0];np[i*3+1]=pts[i][1];np[i*3+2]=pts[i][2];}
+  var ng=new T.BufferGeometry();ng.setAttribute('position',new T.BufferAttribute(np,3));
+  G.net.add(new T.Points(ng,track('net',new T.PointsMaterial({color:CYAN,size:0.12,transparent:true,opacity:0.9,depthWrite:false,blending:T.AdditiveBlending}))));
+  var edges=[],ep=[],deg=new Array(N).fill(0);
+  for(i=0;i<N;i++)for(j=i+1;j<N;j++){
+    var dx=pts[i][0]-pts[j][0],dy=pts[i][1]-pts[j][1],dz=pts[i][2]-pts[j][2];
+    if(dx*dx+dy*dy+dz*dz<11.5&&deg[i]<4&&deg[j]<4){deg[i]++;deg[j]++;edges.push([i,j]);ep.push(pts[i][0],pts[i][1],pts[i][2],pts[j][0],pts[j][1],pts[j][2]);}
+  }
+  var eg=new T.BufferGeometry();eg.setAttribute('position',new T.Float32BufferAttribute(ep,3));
+  G.net.add(new T.LineSegments(eg,track('net',new T.LineBasicMaterial({color:CYAN,transparent:true,opacity:0.2,depthWrite:false,blending:T.AdditiveBlending}))));
+  var M=22,pulses=[],pPos=new Float32Array(M*3);
+  for(i=0;i<M;i++)pulses.push({e:Math.floor(rnd()*edges.length),t:rnd(),s:0.25+rnd()*0.4});
+  var pg=new T.BufferGeometry();pg.setAttribute('position',new T.BufferAttribute(pPos,3));
+  G.net.add(new T.Points(pg,track('net',new T.PointsMaterial({color:GOLD,size:0.22,transparent:true,opacity:1,depthWrite:false,blending:T.AdditiveBlending}))));
+
+  /* core */
+  var ico1=new T.Mesh(new T.IcosahedronGeometry(1.7,1),track('core',new T.MeshBasicMaterial({color:CYAN,wireframe:true,transparent:true,opacity:0.55})));
+  var ico2=new T.Mesh(new T.IcosahedronGeometry(1.05,0),track('core',new T.MeshBasicMaterial({color:GOLD,wireframe:true,transparent:true,opacity:0.85})));
+  var nucleus=new T.Mesh(new T.SphereGeometry(0.42,24,16),track('core',new T.MeshBasicMaterial({color:BLUE,transparent:true,opacity:0.95})));
+  var ring1=new T.Mesh(new T.TorusGeometry(2.7,0.012,8,140),track('core',new T.MeshBasicMaterial({color:CYAN,transparent:true,opacity:0.55})));
+  var ring2=new T.Mesh(new T.TorusGeometry(3.25,0.012,8,140),track('core',new T.MeshBasicMaterial({color:GOLD,transparent:true,opacity:0.4})));
+  ring1.rotation.x=1.15;ring2.rotation.y=1.2;ring2.rotation.x=0.4;
+  G.core.add(ico1,ico2,nucleus,ring1,ring2);
+
+  /* launchpad helix: six waypoints */
+  var wp=[];for(i=0;i<6;i++){var a=i*0.95;wp.push(new T.Vector3(Math.cos(a)*2.6,-3.6+i*1.45,Math.sin(a)*2.6));}
+  var curve=new T.CatmullRomCurve3(wp);
+  var lg=new T.BufferGeometry().setFromPoints(curve.getPoints(140));
+  G.path.add(new T.Line(lg,track('path',new T.LineBasicMaterial({color:CYAN,transparent:true,opacity:0.7}))));
+  var spheres=[];
+  for(i=0;i<6;i++){
+    var col=i===5?GOLD:(i%2?BLUE:CYAN);
+    var s=new T.Mesh(new T.SphereGeometry(i===5?0.5:0.3,20,14),track('path',new T.MeshBasicMaterial({color:col,transparent:true,opacity:0.95})));
+    s.position.copy(wp[i]);G.path.add(s);spheres.push(s);
+    var halo=new T.Mesh(new T.TorusGeometry(i===5?0.85:0.55,0.01,8,48),track('path',new T.MeshBasicMaterial({color:col,transparent:true,opacity:0.5})));
+    halo.position.copy(wp[i]);halo.rotation.x=1.2;G.path.add(halo);
+  }
+
+  /* lab shapes + wave field */
+  var oct=new T.Mesh(new T.OctahedronGeometry(1.4,0),track('lab',new T.MeshBasicMaterial({color:CYAN,wireframe:true,transparent:true,opacity:0.7})));oct.position.set(-4.2,1.4,-1);
+  var dod=new T.Mesh(new T.DodecahedronGeometry(1.25,0),track('lab',new T.MeshBasicMaterial({color:GOLD,wireframe:true,transparent:true,opacity:0.7})));dod.position.set(4.2,-0.2,-2);
+  var knot=new T.Mesh(new T.TorusKnotGeometry(0.85,0.25,90,10),track('lab',new T.MeshBasicMaterial({color:BLUE,wireframe:true,transparent:true,opacity:0.8})));knot.position.set(0,2.8,-4);
+  G.lab.add(oct,dod,knot);
+  var GN=28,wavePos=new Float32Array(GN*GN*3),wi=0,ix,iz;
+  for(ix=0;ix<GN;ix++)for(iz=0;iz<GN;iz++){wavePos[wi++]=(ix-GN/2)*0.55;wavePos[wi++]=0;wavePos[wi++]=(iz-GN/2)*0.55;}
+  var wg=new T.BufferGeometry();wg.setAttribute('position',new T.BufferAttribute(wavePos,3));
+  var wave=new T.Points(wg,track('lab',new T.PointsMaterial({color:CYAN,size:0.08,transparent:true,opacity:0.8,depthWrite:false,blending:T.AdditiveBlending})));
+  wave.position.set(0,-4,-2);G.lab.add(wave);
+
+  /* modes */
+  var MODES={
+    home:{net:1,core:1,cam:[0,0.3,12]},
+    academy:{net:0.5,core:0.5,cam:[0,0,13]},
+    launchpad:{net:0.4,path:1,cam:[0,0,12]},
+    lab:{net:0.35,lab:1,cam:[0,0.4,12]},
+    other:{net:0.5,cam:[0,0,13]}
+  };
+  var cur=MODES.home,curName='home',wide=window.innerWidth>900,mx=0,my=0,sc=0,time=0;
+  function modeFor(r){if(r==='home')return['home',MODES.home];if(r==='academy'||r.indexOf('academy-')===0)return['academy',MODES.academy];if(r==='launchpad')return['launchpad',MODES.launchpad];if(r==='innovation-lab')return['lab',MODES.lab];return['other',MODES.other];}
+  function coreHome(){return wide?{x:3.7,y:0.2,s:1}:{x:0,y:1.0,s:0.8};}
+  function coreAcad(){return wide?{x:5.4,y:1.6,s:0.5}:{x:3,y:3.2,s:0.4};}
+  function pathPos(){return wide?3.6:0;}
+  function readScroll(){var m=document.documentElement.scrollHeight-window.innerHeight;sc=m>0?Math.min(1,Math.max(0,window.scrollY/m)):0;}
+
+  function applyFade(){
+    Object.keys(reg).forEach(function(n){var f=fade[n];G[n].visible=f>0.01;reg[n].forEach(function(e){e.m.opacity=e.o*f*((n==='core'&&!wide)?0.6:1);});});
+  }
+  function update(dt){
+    time+=dt;
+    var k=Math.min(1,dt*3),n;
+    for(n in fade){fade[n]+=((target[n]||0)-fade[n])*k;}
+    applyFade();
+    var ez=Math.min(1,dt*2.2);
+    var cz=cur.cam[2]-(curName==='home'?sc*3.5:sc*1.5);
+    camera.position.x+=((cur.cam[0]+mx*0.9)-camera.position.x)*ez;
+    camera.position.y+=((cur.cam[1]-my*0.6-sc*1.2)-camera.position.y)*ez;
+    camera.position.z+=(cz-camera.position.z)*ez;
+    camera.lookAt(0,0,0);
+    G.net.rotation.y=time*0.045+sc*1.4;G.net.rotation.x=Math.sin(time*0.1)*0.08;
+    var cp=curName==='academy'?coreAcad():coreHome();
+    G.core.position.x+=(cp.x-G.core.position.x)*ez;G.core.position.y+=(cp.y-G.core.position.y)*ez;
+    var cs=G.core.scale.x+(cp.s-G.core.scale.x)*ez;G.core.scale.set(cs,cs,cs);
+    ico1.rotation.x+=dt*0.18;ico1.rotation.y+=dt*0.28;ico2.rotation.x-=dt*0.35;ico2.rotation.y-=dt*0.22;
+    ring1.rotation.z+=dt*0.25;ring2.rotation.z-=dt*0.18;
+    var pp=pathPos();G.path.position.x+=(pp-G.path.position.x)*ez;G.path.rotation.y=time*0.22+sc*1.5;
+    for(i=0;i<spheres.length;i++){var sc2=1+Math.sin(time*2+i)*0.08;spheres[i].scale.set(sc2,sc2,sc2);}
+    oct.rotation.x+=dt*0.3;oct.rotation.y+=dt*0.2;dod.rotation.y+=dt*0.25;dod.rotation.z+=dt*0.15;knot.rotation.x+=dt*0.2;knot.rotation.y+=dt*0.3;
+    if(G.lab.visible){
+      var q=0,gx,gz;
+      for(gx=0;gx<GN;gx++)for(gz=0;gz<GN;gz++){var x=wavePos[q],z=wavePos[q+2];wavePos[q+1]=Math.sin(x*0.5+time*0.9)*0.35+Math.cos(z*0.5+time*0.7)*0.35;q+=3;}
+      wg.attributes.position.needsUpdate=true;
+    }
+    if(G.net.visible){
+      for(i=0;i<M;i++){var p=pulses[i];p.t+=dt*p.s;if(p.t>1){p.t=0;p.e=Math.floor(rnd()*edges.length);}
+        var ed=edges[p.e],a=pts[ed[0]],b=pts[ed[1]];
+        pPos[i*3]=a[0]+(b[0]-a[0])*p.t;pPos[i*3+1]=a[1]+(b[1]-a[1])*p.t;pPos[i*3+2]=a[2]+(b[2]-a[2])*p.t;}
+      pg.attributes.position.needsUpdate=true;
+    }
+  }
+  function snap(){
+    var k;for(k in fade)fade[k]=target[k]||0;
+    camera.position.set(cur.cam[0],cur.cam[1],cur.cam[2]);
+    var cp=curName==='academy'?coreAcad():coreHome();G.core.position.set(cp.x,cp.y,0);G.core.scale.set(cp.s,cp.s,cp.s);
+    G.path.position.x=pathPos();
+  }
+  function renderOnce(){update(0);renderer.render(scene,camera);}
+
+  var raf=0,last=0;
+  function frame(now){raf=requestAnimationFrame(frame);var dt=Math.min(0.05,(now-last)/1000);last=now;update(dt);renderer.render(scene,camera);}
+  function start(){if(reduce||raf||document.hidden)return;last=performance.now();raf=requestAnimationFrame(frame);}
+  function stop(){cancelAnimationFrame(raf);raf=0;}
+  document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start();});
+
+  function resize(){
+    var w=window.innerWidth,h=window.innerHeight;wide=w>900;
+    renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();readScroll();
+    if(reduce){snap();renderOnce();}
+  }
+  window.addEventListener('resize',resize);
+  window.addEventListener('scroll',readScroll,{passive:true});
+  if(!reduce)window.addEventListener('pointermove',function(e){mx=(e.clientX/window.innerWidth)*2-1;my=(e.clientY/window.innerHeight)*2-1;},{passive:true});
+
+  window.__stage={setMode:function(r){
+    var m=modeFor(r);curName=m[0];cur=m[1];
+    target={net:cur.net||0,core:cur.core||0,path:cur.path||0,lab:cur.lab||0};
+    readScroll();
+    if(reduce){snap();renderOnce();}
+  }};
+  resize();
+  if(!reduce)start();
+})();
+
+route();
+})();
+</script>

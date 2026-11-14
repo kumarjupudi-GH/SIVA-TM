@@ -1,0 +1,47 @@
+{
+  "name": "SIVA Techno Mart",
+  "expansion": "Smart Intelligent Virtual Agents",
+  "tagline": "Raising Your Skills to the Next Level with Superintelligent Tools",
+  "philosophy": ["Learn", "Innovate", "Build", "Empower"],
+  "heroStatement": "Transforming everyday challenges into intelligent solutions. Empowering families, professionals, and future entrepreneurs through practical AI agents, technology education, and innovation.",
+  "summary": "SIVA Techno Mart helps people learn AI, use intelligent tools, build their own technology, and turn promising ideas into practical solutions.",
+  "contactEmail": "",
+  "social": [],
+  "why": [
+    { "title": "Accessible Intelligence", "text": "Making AI understandable and useful for everyone.", "icon": "Sparkles" },
+    { "title": "Practical Innovation", "text": "Building tools that address real-world problems.", "icon": "Hammer" },
+    { "title": "Continuous Learning", "text": "Encouraging people to learn new technology skills throughout their careers.", "icon": "BookOpen" },
+    { "title": "Responsible Technology", "text": "Promoting privacy, security, transparency, and human oversight.", "icon": "ShieldCheck" }
+  ],
+  "howWeWork": [
+    { "title": "Understand", "text": "Listen to the real problem and the people who face it." },
+    { "title": "Explore", "text": "Compare approaches and test what AI can and cannot do." },
+    { "title": "Design", "text": "Shape a simple, clear experience before building." },
+    { "title": "Build", "text": "Create working prototypes with AI-assisted development." },
+    { "title": "Improve", "text": "Learn from real use and refine responsibly." }
+  ],
+  "journey": [
+    "Discover an Idea",
+    "Learn AI Tools",
+    "Build a Prototype",
+    "Validate with Users",
+    "Launch an MVP",
+    "Grow Responsibly"
+  ],
+  "community": [
+    "Explore AI learning opportunities",
+    "Request product demonstrations",
+    "Submit innovative ideas",
+    "Express interest in workshops",
+    "Discuss collaboration opportunities"
+  ],
+  "contactAreas": [
+    "FamilyBuddy AI",
+    "Financial AI",
+    "Wealth Management AI",
+    "Vibe Coding Training",
+    "Entrepreneurship Mentoring",
+    "AI Product Development",
+    "Business Collaboration"
+  ]
+}

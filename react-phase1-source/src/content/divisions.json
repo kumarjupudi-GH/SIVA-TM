@@ -1,0 +1,51 @@
+{
+  "financial": {
+    "features": [
+      "Personal budgeting and cash flow planning",
+      "Savings goal calculators",
+      "Retirement planning education",
+      "Debt reduction scenarios",
+      "Financial literacy learning tools",
+      "Family financial organization",
+      "AI-assisted financial scenario exploration"
+    ]
+  },
+  "wealth": {
+    "features": [
+      "Asset and liability organization",
+      "Investment portfolio tracking concepts",
+      "Wealth growth scenario modeling",
+      "Estate and legacy planning education",
+      "Risk awareness and diversification education",
+      "Family wealth continuity",
+      "Financial document organization"
+    ]
+  },
+  "launchpad": {
+    "audiences": [
+      "Nontechnical professionals",
+      "Students and career changers",
+      "Small business owners",
+      "Homemakers with business ideas",
+      "Aspiring entrepreneurs",
+      "Retired professionals exploring technology"
+    ],
+    "services": [
+      "Idea discovery workshops",
+      "AI-powered prototype development",
+      "Website and app creation guidance",
+      "Product validation",
+      "Automation consulting",
+      "Entrepreneurship mentoring"
+    ]
+  },
+  "lab": [
+    { "title": "Intelligent workflow automation", "status": "Prototype" },
+    { "title": "AI-assisted engineering productivity", "status": "Coming Soon" },
+    { "title": "Scientific visualization and educational simulations", "status": "Coming Soon" },
+    { "title": "Data analytics and business intelligence", "status": "Coming Soon" },
+    { "title": "Custom AI agent prototyping", "status": "Prototype" },
+    { "title": "Multi-agent orchestration concepts", "status": "Coming Soon" },
+    { "title": "Practical research and experimentation", "status": "Coming Soon" }
+  ]
+}
