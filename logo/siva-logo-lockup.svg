@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 170" role="img" aria-label="SIVA Techno Mart. Raising Your Skills with Smart Intelligent Virtual Agents to the Next Level">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 170" role="img" aria-label="SIVA Techno Mart. Raising Your Skills to the Next Level with Smart Intelligent Virtual Agents">
 <rect width="760" height="170" rx="20" fill="#08162E"/>
 <g transform="translate(26 20) scale(1.05)"><path d="M86 30H52a16 16 0 0 0 0 32H68a16 16 0 0 1 0 32H34" stroke="#43D9EE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="86" cy="30" r="8" fill="#D9B86C"/><circle cx="34" cy="94" r="8" fill="#1478D4"/><circle cx="52" cy="62" r="3.5" fill="#08162E"/><circle cx="68" cy="62" r="3.5" fill="#08162E"/></g>
 <text x="170" y="82" font-family="Sora, 'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="2" fill="#F5F8FC">SIVA <tspan fill="#43D9EE">TECHNO MART</tspan></text>
-<rect x="170" y="96" width="56" height="3" fill="#D9B86C"/>
-<text x="170" y="124" font-family="Sora, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" fill="#D9B86C">Raising Your Skills with Smart Intelligent</text>
-<text x="170" y="147" font-family="Sora, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" fill="#D9B86C">Virtual Agents to the Next Level</text>
+<rect x="170" y="96" width="56" height="3" fill="#F2A33A"/>
+<text x="170" y="124" font-family="Sora, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" fill="#F2A33A">Raising Your Skills to the Next Level</text>
+<text x="170" y="147" font-family="Sora, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" fill="#F2A33A">with Smart Intelligent Virtual Agents</text>
 </svg>
