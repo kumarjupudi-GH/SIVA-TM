@@ -4,11 +4,16 @@
     "name": "",
     "role": "Founder",
     "photo": "",
-    "introduction": "",
+    "introduction": "I am a seasoned Technology Architect, AI Innovator and Entrepreneur with over 25 years of experience in enterprise data architecture, cloud technologies and digital transformation. As the founder of SIVA Techno Mart, I am passionate about building AI-powered solutions that simplify everyday life, empower families and transform learning. Beyond technology, I am a lifelong learner, educator and mentor, dedicated to inspiring the next generation through innovation, knowledge sharing and meaningful community contributions.",
     "background": "",
     "technologyVision": ""
   },
   "mission": "Empowering everyday professionals to become technology creators.",
-  "values": ["Learn", "Innovate", "Build", "Empower"],
+  "values": [
+    "Learn",
+    "Innovate",
+    "Build",
+    "Empower"
+  ],
   "members": []
 }
