@@ -33,3 +33,4 @@ conversation with Claude. Context in [brackets] is added for clarity and was not
 28. what is other alternate option ?
 29. let us go with Google Sheet via apps script   [Apps Script from `apps-script/Code.gs`, deployed as a web app; its /exec address goes into CONFIG.formEndpoint]
 30. can you push all the prompts near to code build into git repository under VibeCodingPormpt folder. if not exists create one , so that in case of emergency we can re create exact website.
+31. I want you create a menu option VIBE CODE Marketplace, where you I provide a pdf which actually a basic beginner guide for vibecoding you need to publish it as a "Vibecode beginner's Book" webpages on chapterwise not suppose to be downloadable. Also, I have zip of http files where wibecode projects are there, and they need to be under "Try for Free". Please build the placeholders with good professional names and let me know I will provide required documents.

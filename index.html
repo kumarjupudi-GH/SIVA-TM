@@ -68,7 +68,7 @@ h1[tabindex="-1"]:focus,main:focus{outline:none}
 .brand-tag{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.04em;color:var(--amber);font-weight:500;line-height:1.35;max-width:270px}
 @media (max-width:560px){.brand-tag{display:none}}
 .nav-links{display:flex;align-items:center;gap:2px}
-.nav-links a{color:#CBD7EA;text-decoration:none;font-size:.84rem;font-weight:600;padding:10px 11px;border-radius:8px}
+.nav-links a{white-space:nowrap;color:#CBD7EA;text-decoration:none;font-size:.84rem;font-weight:600;padding:10px 11px;border-radius:8px}
 .nav-links a:hover{color:var(--cloud);background:rgba(245,248,252,.07)}
 .nav-links a[aria-current="page"]{color:var(--cyan)}
 .nav-links a.cta{background:var(--blue);color:#fff;margin-left:8px}
@@ -79,7 +79,7 @@ h1[tabindex="-1"]:focus,main:focus{outline:none}
 #menu .wrap{display:grid;padding-block:12px 18px;gap:2px}
 #menu a{color:var(--cloud);text-decoration:none;font-weight:600;padding:13px 6px;border-bottom:1px solid var(--line)}
 #menu a[aria-current="page"]{color:var(--cyan)}
-@media (max-width:1180px){
+@media (max-width:1400px){
   .nav-links{display:none}.menu-btn{display:inline-flex}
   #menu.open{display:block;max-height:calc(100vh - 68px);overflow:auto}
 }
@@ -205,6 +205,20 @@ details p{padding:0 0 18px;color:#CBD7EA;max-width:70ch}
 .aside{display:grid;gap:18px;position:sticky;top:calc(88px + env(safe-area-inset-top,0px))}
 @media (max-width:900px){.aside{position:static}}
 html:not(.show-ph) .ph{display:none!important}
+.reader{display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:860px){.reader{grid-template-columns:minmax(0,1fr)}}
+.toc{position:sticky;top:84px;display:flex;flex-direction:column;gap:4px;max-height:calc(100vh - 110px);overflow:auto}
+@media (max-width:860px){.toc{position:static;max-height:none}}
+.toc a{display:flex;gap:10px;align-items:baseline;color:#CBD7EA;text-decoration:none;font-size:.9rem;font-weight:600;padding:9px 12px;border-radius:10px;border:1px solid transparent}
+.toc a span{font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
+.toc a:hover{background:rgba(245,248,252,.06)}
+.toc a[aria-current="true"]{color:var(--cyan);border-color:rgba(67,217,238,.4);background:rgba(67,217,238,.07)}
+.book-body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.book-body h2{margin-top:6px}
+.book-body .prose p{margin-top:14px;max-width:68ch;color:#D6E0F0}
+.book-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:28px}
+.try-card[aria-disabled="true"] .btn{opacity:.55;pointer-events:none}
+@media print{.book-body{display:none!important}}
 html:not(.show-ph) .about-people{grid-template-columns:minmax(0,1fr)}
 .placeholder{border:1px dashed rgba(255,216,77,.65);border-radius:12px;padding:14px;color:#FFE9A0;font-size:.88rem}
 
@@ -242,6 +256,7 @@ html:not(.show-ph) .about-people{grid-template-columns:minmax(0,1fr)}
       <nav class="nav-links" aria-label="Main">
         <a href="#academy" data-nav="academy">AI Academy</a>
         <a href="#vibe-coding-lab" data-nav="vibe-coding-lab">Vibe Coding Lab</a>
+        <a href="#vibe-marketplace" data-nav="vibe-marketplace">Vibe Code Marketplace</a>
         <a href="#launchpad" data-nav="launchpad">Launchpad</a>
         <a href="#ai-solutions" data-nav="ai-solutions">AI Solutions</a>
         <a href="#innovation-lab" data-nav="innovation-lab">Innovation Lab</a>
@@ -257,6 +272,7 @@ html:not(.show-ph) .about-people{grid-template-columns:minmax(0,1fr)}
         <a href="#home" data-nav="home">Home</a>
         <a href="#academy" data-nav="academy">AI Academy</a>
         <a href="#vibe-coding-lab" data-nav="vibe-coding-lab">Vibe Coding Lab</a>
+        <a href="#vibe-marketplace" data-nav="vibe-marketplace">Vibe Code Marketplace</a>
         <a href="#launchpad" data-nav="launchpad">Launchpad</a>
         <a href="#ai-solutions" data-nav="ai-solutions">AI Solutions</a>
         <a href="#innovation-lab" data-nav="innovation-lab">Innovation Lab</a>
@@ -419,6 +435,49 @@ html:not(.show-ph) .about-people{grid-template-columns:minmax(0,1fr)}
       </div></div>
     </section>
 
+    <!-- VIBE CODE MARKETPLACE -->
+    <section class="route" data-route="vibe-marketplace" data-title="Vibe Code Marketplace" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow">Vibe Code Marketplace</p>
+        <h1 tabindex="-1">Learn to vibe code. Then try what others built.</h1>
+        <p class="lead">A reading room for beginners and a showcase of small working projects built by describing them to an AI assistant. Start with the book, then open a project and see what is possible.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="grid g2">
+          <article class="panel tilt"><span class="chip">Read online</span><h3 style="margin-top:14px">Vibecode Beginner&#8217;s Book</h3><p style="margin-top:8px">A plain-language, chapter-by-chapter guide to building software with an AI assistant. No coding background needed.</p><div class="card-foot"><a class="btn btn-primary" href="#vibe-book">Start reading</a></div></article>
+          <article class="panel tilt"><span class="chip">Open and use</span><h3 style="margin-top:14px">Try for Free</h3><p style="margin-top:8px">Small, working vibe coded projects you can open in your browser and use at no cost.</p><div class="card-foot"><a class="btn btn-primary" href="#vibe-try-free">Browse projects</a></div></article>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- VIBECODE BEGINNER'S BOOK -->
+    <section class="route" data-route="vibe-book" data-title="Vibecode Beginner&#8217;s Book" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow"><a href="#vibe-marketplace" style="color:inherit">Vibe Code Marketplace</a> / Book</p>
+        <h1 tabindex="-1">Vibecode Beginner&#8217;s Book</h1>
+        <p class="lead">A step-by-step introduction to building software by describing what you want. Read it here, one chapter at a time.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="reader">
+          <nav class="toc" id="book-toc" aria-label="Chapters"></nav>
+          <article class="panel book-body" id="book-body" aria-live="polite"></article>
+        </div>
+        <p class="muted" style="margin-top:18px;font-size:.85rem">This book is published for reading on this website and is not offered as a download.</p>
+      </div></div>
+    </section>
+
+    <!-- TRY FOR FREE -->
+    <section class="route" data-route="vibe-try-free" data-title="Try for Free" hidden>
+      <div class="band clear pagehead"><div class="wrap">
+        <p class="eyebrow"><a href="#vibe-marketplace" style="color:inherit">Vibe Code Marketplace</a> / Try for Free</p>
+        <h1 tabindex="-1">Try for Free</h1>
+        <p class="lead">Small working projects built with vibe coding. Open one, use it, and see how far a plain-language idea can go.</p>
+      </div></div>
+      <div class="band"><div class="wrap">
+        <div class="grid g3" id="try-grid"></div>
+      </div></div>
+    </section>
+
     <!-- LAUNCHPAD -->
     <section class="route" data-route="launchpad" data-title="Entrepreneurship Launchpad" hidden>
       <div class="band clear pagehead"><div class="wrap">
@@ -563,7 +622,7 @@ html:not(.show-ph) .about-people{grid-template-columns:minmax(0,1fr)}
           <p style="display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;color:var(--cloud);font-size:1rem"><svg viewBox="0 0 120 124" width="30" height="31" fill="none" aria-hidden="true"><path d="M86 30H52a16 16 0 0 0 0 32H68a16 16 0 0 1 0 32H34" stroke="#43D9EE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="86" cy="30" r="8" fill="#D9B86C"/><circle cx="34" cy="94" r="8" fill="#1478D4"/><circle cx="52" cy="62" r="3.5" fill="#08162E"/><circle cx="68" cy="62" r="3.5" fill="#08162E"/></svg>SIVA Techno Mart</p>
           <p style="margin-top:12px;color:var(--amber);max-width:34ch">Raising Your Skills to the Next Level with Smart Intelligent Virtual Agents</p>
         </div>
-        <div><h3>Learn</h3><ul><li><a href="#academy">AI Academy</a></li><li><a href="#vibe-coding-lab">Vibe Coding Lab</a></li><li><a href="#academy-ai-foundations">AI Foundations</a></li></ul></div>
+        <div><h3>Learn</h3><ul><li><a href="#academy">AI Academy</a></li><li><a href="#vibe-coding-lab">Vibe Coding Lab</a></li><li><a href="#vibe-marketplace">Vibe Code Marketplace</a></li><li><a href="#academy-ai-foundations">AI Foundations</a></li></ul></div>
         <div><h3>Build</h3><ul><li><a href="#launchpad">Launchpad</a></li><li><a href="#ai-solutions">AI Solutions</a></li><li><a href="#innovation-lab">Innovation Lab</a></li></ul></div>
         <div><h3>Company</h3><ul><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#terms">Terms</a></li></ul></div>
       </div>
@@ -844,11 +903,51 @@ menuBtn.addEventListener('click',function(){
   document.body.classList.toggle('menu-open',open);$('#menu-ico').setAttribute('d',open?'M6 6l12 12M18 6L6 18':'M4 7h16M4 12h16M4 17h16');
 });
 $('#skip').addEventListener('click',function(e){e.preventDefault();$('#main').focus();});
+
+/* ============ Vibe Code Marketplace content ============ */
+/* BOOK: fill in body with an array of paragraphs (plain text) per chapter. Empty body shows "coming soon". */
+var BOOK = [
+  {title:'What Is Vibe Coding?',summary:'The idea, in plain words, and what you can and cannot expect.',body:[]},
+  {title:'Setting Up Your Workspace',summary:'The tools you need and how to get ready in minutes.',body:[]},
+  {title:'Writing Your First Prompt',summary:'How to describe what you want so an AI assistant can build it.',body:[]},
+  {title:'Building a Simple App, Step by Step',summary:'A guided first project from idea to working result.',body:[]},
+  {title:'Reviewing and Testing the Result',summary:'How to check what the AI built before you rely on it.',body:[]},
+  {title:'Fixing Problems and Improving',summary:'Giving feedback, correcting mistakes and iterating.',body:[]},
+  {title:'Design, Layout and Ease of Use',summary:'Making your project clear, readable and pleasant to use.',body:[]},
+  {title:'Saving, Sharing and Publishing',summary:'Keeping your work safe and putting it online.',body:[]},
+  {title:'Safety, Privacy and Good Habits',summary:'Protecting yourself and your users while you build.',body:[]},
+  {title:'Your Next Projects',summary:'Ideas and a path for what to build after this book.',body:[]}
+];
+/* TRY: set url to the project page (for example 'try/bill-splitter/index.html') to turn a card on. */
+var TRY = [
+  {name:'Smart Bill Splitter',category:'Everyday tools',blurb:'Split a bill and a tip between friends in seconds.',url:''},
+  {name:'Family Budget Planner',category:'Money',blurb:'A simple monthly budget view for a household.',url:''},
+  {name:'Daily Habit Tracker',category:'Productivity',blurb:'Track small daily habits and see your streaks.',url:''},
+  {name:'Study Flashcard Studio',category:'Learning',blurb:'Make and review flashcards for any subject.',url:''},
+  {name:'Recipe and Meal Planner',category:'Lifestyle',blurb:'Plan the week\u2019s meals and build a shopping list.',url:''},
+  {name:'Mini Quiz Maker',category:'Learning',blurb:'Create a short quiz and share it with others.',url:''}
+];
+var bookCur=1;
+function renderBook(n){
+  n=Math.max(1,Math.min(BOOK.length,n||1)); bookCur=n; var c=BOOK[n-1];
+  $('#book-toc').innerHTML=BOOK.map(function(b,i){return '<a href="#vibe-book-'+(i+1)+'"'+(i+1===n?' aria-current="true"':'')+'><span>'+(i<9?'0':'')+(i+1)+'</span>'+esc(b.title)+'</a>';}).join('');
+  var body=c.body.length?'<div class="prose">'+c.body.map(function(t){return '<p>'+esc(t)+'</p>';}).join('')+'</div>':'<div class="notice" style="margin-top:16px"><strong>Coming soon.</strong> This chapter is being prepared and will be published here.</div>';
+  var prev=n>1?'<a class="btn btn-ghost" href="#vibe-book-'+(n-1)+'">&larr; '+esc(BOOK[n-2].title)+'</a>':'<span></span>';
+  var next=n<BOOK.length?'<a class="btn btn-primary" href="#vibe-book-'+(n+1)+'">'+esc(BOOK[n].title)+' &rarr;</a>':'';
+  $('#book-body').innerHTML='<p class="eyebrow" style="margin:0">Chapter '+n+' of '+BOOK.length+'</p><h2>'+esc(c.title)+'</h2><p class="muted">'+esc(c.summary)+'</p>'+body+'<div class="book-nav">'+prev+next+'</div>';
+}
+function renderTry(){
+  $('#try-grid').innerHTML=TRY.map(function(p){var on=!!p.url;
+    return '<article class="panel tilt try-card"'+(on?'':' aria-disabled="true"')+'><div class="card-top"><h3>'+esc(p.name)+'</h3><span class="badge" data-s="'+(on?'Available':'Coming Soon')+'">'+(on?'Free':'Coming Soon')+'</span></div><p class="muted" style="font-size:.82rem;margin:0 0 6px">'+esc(p.category)+'</p><p>'+esc(p.blurb)+'</p><div class="card-foot">'+(on?'<a class="btn btn-primary" href="'+esc(p.url)+'" target="_blank" rel="noopener">Try for free</a>':'<span class="btn btn-primary" aria-hidden="true">Try for free</span>')+'</div></article>';}).join('');
+}
+renderTry(); renderBook(1);
+(function(){var b=$('#book-body');['contextmenu','copy','cut','dragstart'].forEach(function(ev){b.addEventListener(ev,function(e){e.preventDefault();});});})();
 var first=true;
 function route(){
-  var h=(location.hash||'').replace(/^#/,''); var r=routes[h]?h:'home';
+  var h=(location.hash||'').replace(/^#/,''); var bm=/^vibe-book-(\d+)$/.exec(h); if(bm){h='vibe-book';renderBook(+bm[1]);}else if(h==='vibe-book'){renderBook(1);}
+  var r=routes[h]?h:'home';
   Object.keys(routes).forEach(function(k){routes[k].hidden=(k!==r);});
-  var navKey=r.indexOf('academy-')===0?'academy':r;
+  var navKey=r.indexOf('academy-')===0?'academy':(r==='vibe-book'||r==='vibe-try-free')?'vibe-marketplace':r;
   $$('[data-nav]').forEach(function(a){if(a.getAttribute('data-nav')===navKey)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   document.title=(r==='home'?'SIVA Techno Mart':routes[r].getAttribute('data-title')+' | SIVA Techno Mart');
   closeMenu(); window.scrollTo(0,0);

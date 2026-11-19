@@ -41,3 +41,12 @@ My mission is simple: Transform experience into innovation, innovation into oppo
 
 ## Open items
 Founder name and photo, KinKeep link, FamilyBuddy status (currently "Beta"), real Privacy and Terms text.
+
+## Vibe Code Marketplace (added later)
+- Menu item "Vibe Code Marketplace" (#vibe-marketplace) with two sub-pages: #vibe-book (chapter reader, #vibe-book-1 to #vibe-book-10)
+  and #vibe-try-free (project cards). Content lives in the `BOOK` and `TRY` arrays in the page script.
+- Book: 10 placeholder chapters (What Is Vibe Coding?; Setting Up Your Workspace; Writing Your First Prompt; Building a Simple App, Step by Step;
+  Reviewing and Testing the Result; Fixing Problems and Improving; Design, Layout and Ease of Use; Saving, Sharing and Publishing;
+  Safety, Privacy and Good Habits; Your Next Projects). Read online only, no download link, copy/right-click/print blocked as a deterrent.
+- Try for Free: 6 placeholder cards (Smart Bill Splitter, Family Budget Planner, Daily Habit Tracker, Study Flashcard Studio,
+  Recipe and Meal Planner, Mini Quiz Maker). Projects go in `try/<name>/index.html`; set the card's `url` to turn it on.
