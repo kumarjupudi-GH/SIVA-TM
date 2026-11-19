@@ -46,14 +46,15 @@ function doPost(e) {
     var lock = LockService.getScriptLock();
     lock.waitLock(10000);
     try {
-      var sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
-      if (!sheet) return reply_(false, 'Server error');
+      var ss = SpreadsheetApp.openById(SHEET_ID);
+      var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0]; // fall back to the first tab
       sheet.appendRow(row);
     } finally {
       lock.releaseLock();
     }
     return reply_(true);
   } catch (err) {
+    Logger.log('ERROR: ' + err); // shows the real cause in View > Executions
     return reply_(false, 'Server error');
   }
 }
