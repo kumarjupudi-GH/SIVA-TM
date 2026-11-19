@@ -1,5 +1,10 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08162E">
 <title>SIVA Techno Mart</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="SIVA Techno Mart is an AI Academy and Entrepreneurship Hub. Learn practical AI skills, build useful applications and explore entrepreneurship.">
 <meta property="og:title" content="SIVA Techno Mart | AI Academy & Entrepreneurship Hub">
 <meta property="og:description" content="From AI Learner to Technology Creator. From Technology Creator to Entrepreneur.">
@@ -199,6 +204,8 @@ details p{padding:0 0 18px;color:#CBD7EA;max-width:70ch}
 .curr span{color:#BFCDE2;font-size:.93rem}
 .aside{display:grid;gap:18px;position:sticky;top:calc(88px + env(safe-area-inset-top,0px))}
 @media (max-width:900px){.aside{position:static}}
+html:not(.show-ph) .ph{display:none!important}
+html:not(.show-ph) .about-people{grid-template-columns:minmax(0,1fr)}
 .placeholder{border:1px dashed rgba(255,216,77,.65);border-radius:12px;padding:14px;color:#FFE9A0;font-size:.88rem}
 
 /* footer */
@@ -218,6 +225,9 @@ details p{padding:0 0 18px;color:#CBD7EA;max-width:70ch}
   .tilt{transform:none!important}
 }
 </style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
 
 <canvas id="stage" aria-hidden="true"></canvas>
 
@@ -488,12 +498,12 @@ details p{padding:0 0 18px;color:#CBD7EA;max-width:70ch}
         <div class="grid g4" data-render="why"></div>
       </div></div>
       <div class="band"><div class="wrap">
-        <div class="grid g2">
+        <div class="grid g2 about-people">
           <div class="panel stack"><h3>Journey – From Passion to Purpose</h3>
             <p>My journey began over 25 years ago with a passion for technology, growing into a career in enterprise data architecture, cloud innovation, and digital transformation. Along the way, I discovered that technology's true value lies in making people's lives better.</p><p>This belief inspired me to found SIVA Techno Mart, with a vision to simplify everyday life through AI, empower families, transform learning, and turn ideas into opportunities.</p><p>As a lifelong learner, educator, and mentor, I believe knowledge grows when shared and innovation thrives when everyone has the opportunity to learn.</p><p style="color:var(--cloud);font-weight:600">My mission is simple: Transform experience into innovation, innovation into opportunity, and opportunity into a better future for everyone.</p>
-            <p class="placeholder">Founder name and photo to be added by the site owner.</p></div>
-          <div class="panel stack"><h3>Team</h3>
-            <p class="placeholder">Team members to be added by the site owner.</p></div>
+            <p class="placeholder ph">Founder name and photo to be added by the site owner.</p></div>
+          <div class="panel stack ph"><h3>Team</h3>
+            <p class="placeholder ph">Team members to be added by the site owner.</p></div>
         </div>
       </div></div>
     </section>
@@ -511,7 +521,7 @@ details p{padding:0 0 18px;color:#CBD7EA;max-width:70ch}
           <div class="panel stack">
             <h3>How your message is handled</h3>
             <p>We use the details you submit only to reply to your enquiry. Read the <a href="#privacy">privacy placeholder</a> and <a href="#terms">terms placeholder</a>.</p>
-            <p class="placeholder">Business email and mailing address to be added by the site owner.</p>
+            <p class="placeholder ph">Business email and mailing address to be added by the site owner.</p>
           </div>
         </div>
       </div></div>
@@ -575,8 +585,12 @@ var CONFIG = {
   // Web-app URL of the Google Apps Script in apps-script/Code.gs (ends in /exec), or any endpoint that
   // accepts a JSON POST and replies {"ok":true}. While empty, forms validate but honestly report nothing was sent.
   // Paste the URL between the quotes below.
-  formEndpoint: ''
+  formEndpoint: '',
+  // Placeholder notes (founder name/photo, team, instructors, missing links, contact address) are hidden.
+  // Set to true to show them again while you fill in the real details.
+  showPlaceholders: false
 };
+if(CONFIG.showPlaceholders)document.documentElement.classList.add('show-ph');
 
 // status must be one of: 'Available', 'Beta', 'Prototype', 'Coming Soon'
 var PRODUCTS = [
@@ -664,7 +678,7 @@ var R = {
   products:function(){return PRODUCTS.map(function(p){
     var action = p.url
       ? '<a class="btn btn-primary" href="'+esc(p.url)+'" target="_blank" rel="noopener noreferrer">Open '+p.name+'</a>'
-      : '<span class="chip">Link not configured yet</span>';
+      : '<span class="chip ph">Link not configured yet</span>';
     return '<article class="panel tilt"><div class="card-top"><h3>'+p.name+'</h3><span class="badge" data-s="'+p.status+'">'+p.status+'</span></div><p>'+p.blurb+'</p><div class="card-foot">'+action+'<a class="link-arrow" href="#contact" data-prefill="Product demonstration" data-topic="'+p.name+'">Request a demonstration</a></div></article>';}).join('');},
   lab:function(){return LAB.map(function(l){return '<article class="panel tilt"><div class="card-top"><h3>'+l[0]+'</h3><span class="badge" data-s="Experimental">Experimental concept</span></div><p>'+l[1]+'</p></article>';}).join('');},
   faq:function(){return FAQ.map(function(f){return '<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>';}).join('');}
@@ -685,9 +699,9 @@ COURSES.forEach(function(c){
      '<div><h2>Prerequisites</h2>'+list(c.prereq)+'</div>'+
      '<div><h2>Learning outcomes</h2>'+list(c.outcomes)+'</div>'+
      '<div><h2>Proposed curriculum</h2><ol class="curr">'+c.curriculum.map(function(m){return '<li><b>'+m[0]+'</b><span>'+m[1]+'</span></li>';}).join('')+'</ol></div>'+
-     '<div><h2>Delivery format</h2><p class="placeholder">Delivery format, schedule, duration and pricing are not confirmed. This is a planned offering.</p></div>'+
+     '<div><h2>Delivery format</h2><p style="color:#CBD7EA;max-width:65ch">Planned offering. Delivery format, schedule, duration and pricing will be announced once confirmed.</p></div>'+
    '</div><aside class="aside">'+
-     '<div class="panel stack"><h3>Instructor</h3><p class="placeholder">Instructor name and background to be added once confirmed.</p></div>'+
+     '<div class="panel stack ph"><h3>Instructor</h3><p class="placeholder ph">Instructor name and background to be added once confirmed.</p></div>'+
      '<div class="panel stack"><h3>Interested?</h3><p>Send an enrollment inquiry and we will reply when details are confirmed. No dates, prices or certificates are promised.</p><a class="btn btn-primary" href="#contact" data-prefill="Training inquiry" data-topic="'+c.title+'">Enrollment inquiry</a></div>'+
    '</aside></div></div>';
   host.appendChild(s);
@@ -1004,3 +1018,5 @@ window.addEventListener('hashchange',route);
 route();
 })();
 </script>
+</body>
+</html>
