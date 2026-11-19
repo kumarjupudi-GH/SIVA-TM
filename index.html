@@ -572,8 +572,9 @@ details p{padding:0 0 18px;color:#CBD7EA;max-width:70ch}
 
 /* ============ CONFIGURATION (edit here; no other code changes needed) ============ */
 var CONFIG = {
-  // URL of a form service (for example a Formspree endpoint) that accepts a JSON POST.
-  // While empty, forms validate but honestly report that nothing was sent.
+  // Web-app URL of the Google Apps Script in apps-script/Code.gs (ends in /exec), or any endpoint that
+  // accepts a JSON POST and replies {"ok":true}. While empty, forms validate but honestly report nothing was sent.
+  // Paste the URL between the quotes below.
   formEndpoint: ''
 };
 
@@ -752,8 +753,11 @@ document.addEventListener('submit',function(e){
     return;
   }
   status.innerHTML='<div class="notice">Sending&hellip;</div>';
-  fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
-    .then(function(r){if(!r.ok)throw new Error('bad status');form.reset();status.innerHTML='<div class="ok">Thank you. Your message was sent.</div>';})
+  payload.page=location.hash||'#home';
+  // text/plain keeps this a "simple" request, so Google Apps Script endpoints accept it without a CORS preflight.
+  fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
+    .then(function(r){if(!r.ok)throw new Error('bad status');return r.json();})
+    .then(function(j){if(!j||j.ok!==true)throw new Error('rejected');form.reset();status.innerHTML='<div class="ok">Thank you. Your message was sent.</div>';})
     .catch(function(){status.innerHTML='<div class="bad">Your message could not be sent. Please try again later.</div>';});
 });
 

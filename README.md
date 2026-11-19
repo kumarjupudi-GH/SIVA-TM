@@ -44,3 +44,20 @@ Any static host (GitHub Pages, Netlify, Cloudflare Pages): upload `index.html`. 
 
 ## Publish with GitHub Pages
 Settings > Pages > Build and deployment > Deploy from a branch > `main` / `(root)`.
+
+## Saving inquiries to Google Sheets
+Submissions from the Contact, Training-inquiry and Idea forms are saved as rows in the Google Sheet **SIVA-TM-Inquiries** (Drive folder `SIVA-TM / Inquiries`) by the Apps Script in `apps-script/Code.gs`.
+
+One-time setup:
+1. Open the **SIVA-TM-Inquiries** spreadsheet > **Extensions > Apps Script**.
+2. Delete the sample code, paste in all of `apps-script/Code.gs`, and save. (The sheet ID at the top is already filled in.)
+3. Optional check: choose the function `testAppend` and click **Run**, then approve the permissions. A test row appears in the sheet; delete it afterwards.
+4. **Deploy > New deployment > type: Web app**. Set *Execute as* **Me** and *Who has access* **Anyone**. Click Deploy and copy the **Web app URL** (it ends in `/exec`).
+5. In `index.html`, paste that URL into `CONFIG.formEndpoint` near the top of the script, commit, and let Pages redeploy.
+6. Submit a test inquiry on the live site and confirm a new row appears.
+
+If you later change `Code.gs`, use **Deploy > Manage deployments > Edit > New version** so the same URL keeps working.
+
+Columns: Received, Type (`inquiry` or `idea`), Name, Email, Interest, Idea title, Assistance requested, Message, Source page.
+
+Safeguards: length limits, required-field and email checks, a hidden spam field, formula-injection protection, and a script lock so simultaneous submissions don't overwrite each other. The web-app URL is public by design, so anyone who finds it could submit rows; they can only add rows to this one sheet. For stronger spam protection later, add Cloudflare Turnstile and verify it in the script.
