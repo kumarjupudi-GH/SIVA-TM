@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Science Flashcards</title>
+<style>:root{font-family:system-ui,Segoe UI,sans-serif;color:#173c3d;background:#eaf9f4}*{box-sizing:border-box}body{margin:0;display:grid;place-items:center;min-height:100vh;padding:24px}
+main{width:min(100%,630px);background:white;padding:30px;border-radius:24px;box-shadow:0 14px 40px #12605822}h1{margin-top:0}p{line-height:1.6}
+.card{display:grid;place-items:center;text-align:center;min-height:220px;padding:25px;background:#e5f7f3;border:2px solid #9ad8cc;border-radius:18px;margin:20px 0;font-size:1.35rem;font-weight:700;white-space:pre-wrap}
+.controls{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}button{border:0;border-radius:10px;padding:12px 16px;cursor:pointer;background:#16786e;color:white;font-size:1rem}
+button:focus-visible{outline:3px solid #ffc64c;outline-offset:2px}#progress{color:#49736e;font-weight:700}</style></head><body><main>
+<h1>🔬 Science Flashcards</h1><p>Read a question, think, then flip the card to see the answer.</p>
+<p id="progress"></p><div class="card" id="card" role="status" aria-live="polite"></div>
+<div class="controls"><button id="previous" type="button">← Previous</button><button id="flip" type="button">Show answer</button><button id="next" type="button">Next →</button></div>
+<p>Invent your own set of science, language, or history questions by changing the cards list inside the file.</p>
+</main><script>
+const cards=[{q:'What do plants need to grow?',a:'Sunlight, water, air, nutrients, and suitable warmth.'},{q:'What planet is known as the Red Planet?',a:'Mars.'},{q:'What is evaporation?',a:'When a liquid changes into a gas.'},{q:'What force pulls us toward Earth?',a:'Gravity.'},{q:'What is a habitat?',a:'The natural home of a living thing.'}];
+let index=0,flipped=false;const $=id=>document.getElementById(id);
+function render(){$('progress').textContent=`Card ${index+1} of ${cards.length}`;$('card').textContent=flipped?cards[index].a:cards[index].q;$('flip').textContent=flipped?'Show question':'Show answer';}
+$('flip').addEventListener('click',()=>{flipped=!flipped;render();});$('previous').addEventListener('click',()=>{index=(index-1+cards.length)%cards.length;flipped=false;render();});$('next').addEventListener('click',()=>{index=(index+1)%cards.length;flipped=false;render();});render();
+</script></body></html>

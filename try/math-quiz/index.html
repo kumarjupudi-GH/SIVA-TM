@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Friendly Math Quiz</title><style>
+  :root{font-family:system-ui,Segoe UI,sans-serif;color:#17304a;background:#ecf6ff}*{box-sizing:border-box}body{margin:0;padding:22px;min-height:100vh;display:grid;place-items:center}
+  main{width:min(100%,600px);background:white;border-radius:22px;padding:30px;box-shadow:0 14px 42px #113f6b20}h1{margin:0 0 8px}p{line-height:1.55}
+  .status{color:#48627a;font-weight:650}.question{font-size:2rem;margin:22px 0}form{display:flex;gap:10px;flex-wrap:wrap}input{flex:1;min-width:150px;font-size:1.1rem;padding:13px;border:2px solid #9ebbd0;border-radius:10px}
+  button{cursor:pointer;border:0;background:#1769b1;color:white;border-radius:10px;padding:13px 18px;font-size:1rem}button.secondary{background:#e9f3ff;color:#174e78}button:focus-visible,input:focus-visible{outline:3px solid #ecb23d;outline-offset:2px}
+  #feedback{font-weight:700;min-height:25px} .hidden{display:none}
+</style></head><body><main>
+  <h1>🔢 Friendly Math Quiz</h1><p>Answer five questions. Every mistake is a chance to learn.</p>
+  <div class="status" id="status">Question 1 of 5 · Score 0</div>
+  <div id="game"><div class="question" id="question"></div>
+    <form id="answerForm"><label for="answer">Your answer</label><input id="answer" type="number" required step="1" autocomplete="off"><button type="submit">Check</button></form>
+    <p id="feedback" aria-live="polite"></p><button class="secondary hidden" id="next" type="button">Next question</button>
+  </div>
+  <div id="finish" class="hidden"><h2 id="result"></h2><p>Try again to improve your score, or invent a new question style.</p><button type="button" id="restart">Play again</button></div>
+</main><script>
+  const questions = [{q:'4 + 7',a:11},{q:'12 - 5',a:7},{q:'3 × 6',a:18},{q:'20 ÷ 4',a:5},{q:'9 + 8',a:17}];
+  let index = 0, score = 0, checked = false;
+  const $ = id => document.getElementById(id);
+  function showQuestion(){ checked=false; $('question').textContent=questions[index].q+' = ?'; $('answer').value=''; $('answer').disabled=false;
+    $('answerForm').querySelector('button').disabled=false;$('feedback').textContent='';$('next').classList.add('hidden');$('status').textContent=`Question ${index+1} of ${questions.length} · Score ${score}`;$('answer').focus(); }
+  $('answerForm').addEventListener('submit', event=>{event.preventDefault();if(checked)return;checked=true;
+    const correct=Number($('answer').value)===questions[index].a;if(correct)score++;
+    $('feedback').textContent=correct?'Correct! Great thinking!':'Good try. The answer is '+questions[index].a+'.';
+    $('answer').disabled=true;$('answerForm').querySelector('button').disabled=true;$('next').textContent=index===questions.length-1?'See result':'Next question';$('next').classList.remove('hidden');
+    $('status').textContent=`Question ${index+1} of ${questions.length} · Score ${score}`;
+  });
+  $('next').addEventListener('click',()=>{index++;if(index===questions.length){$('game').classList.add('hidden');$('finish').classList.remove('hidden');$('result').textContent=`You scored ${score} out of ${questions.length}!`;}else showQuestion();});
+  $('restart').addEventListener('click',()=>{index=0;score=0;$('game').classList.remove('hidden');$('finish').classList.add('hidden');showQuestion();});
+  showQuestion();
+</script></body></html>

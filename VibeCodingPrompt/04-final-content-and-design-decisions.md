@@ -50,3 +50,9 @@ Founder name and photo, KinKeep link, FamilyBuddy status (currently "Beta"), rea
   Safety, Privacy and Good Habits; Your Next Projects). Read online only, no download link, copy/right-click/print blocked as a deterrent.
 - Try for Free: 6 placeholder cards (Smart Bill Splitter, Family Budget Planner, Daily Habit Tracker, Study Flashcard Studio,
   Recipe and Meal Planner, Mini Quiz Maker). Projects go in `try/<name>/index.html`; set the card's `url` to turn it on.
+
+## Book and apps content (supplied by the owner)
+- Source files: SIVA_Vibe_Coding_For_Everyone_Beginners_Book.pdf and SIVA_Vibe_Coding_Six_Working_Apps.zip (BOOK_MANUSCRIPT.md, README.md, 6 apps).
+  The manuscript text is stored in the `BOOK` array of the page script (17 sections: Welcome, Chapters 1-12, three Bonus sections, Resources).
+- Apps live in `try/my-first-website`, `try/math-quiz`, `try/daily-planner`, `try/science-flashcards`, `try/greeting-card-maker`, `try/spending-tracker`.
+- Prompt blocks and code blocks in the book have a Copy button and stay selectable; the rest of the book blocks copy, right-click and print.

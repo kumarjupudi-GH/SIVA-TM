@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My First Website</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#18213e;background:#eef4ff}*{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}main{width:min(100%,680px);background:white;border-radius:24px;padding:36px;box-shadow:0 14px 45px #17346920}
+    h1{font-size:clamp(2rem,5vw,3rem);margin:8px 0}p{line-height:1.7} .tag{color:#5143b8;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    button{border:0;padding:12px 20px;background:#4a3bba;color:white;border-radius:12px;cursor:pointer;font-size:1rem}button:focus-visible{outline:3px solid #ffbc3b;outline-offset:2px}
+    .note{padding:14px 18px;background:#eff9f5;border-radius:12px;margin-top:16px}footer{font-size:.85rem;color:#596783;margin-top:28px}
+  </style>
+</head>
+<body><main>
+  <p class="tag">My first vibe coded creation</p>
+  <h1>Hi! I'm Alex 👋</h1>
+  <p>I'm learning how to turn ideas into websites with an AI helper. I enjoy drawing, science, and exploring new things.</p>
+  <h2>Three things I love</h2>
+  <ul><li>Reading adventure stories</li><li>Playing with puzzles</li><li>Learning something new</li></ul>
+  <button id="surprise" type="button">Surprise me!</button>
+  <p id="message" class="note" aria-live="polite">Click the button for some encouragement.</p>
+  <footer>Made with curiosity • Replace Alex with a nickname before sharing.</footer>
+</main>
+<script>
+  const cheers = ["Every expert was once a beginner!", "Small experiments make big discoveries!", "Keep building. Keep learning!", "Your next idea could help someone!"];
+  let next = 0;
+  document.getElementById('surprise').addEventListener('click', () => {
+    document.getElementById('message').textContent = cheers[next % cheers.length];
+    next++;
+  });
+</script></body></html>
