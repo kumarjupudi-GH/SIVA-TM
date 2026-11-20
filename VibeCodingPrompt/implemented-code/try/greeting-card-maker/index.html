@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Greeting Card Maker</title>
+<style>:root{font-family:system-ui,Segoe UI,sans-serif;color:#3b2a49;background:#fff0f7}*{box-sizing:border-box}body{margin:0;padding:24px}main{width:min(100%,760px);margin:auto;background:white;border-radius:22px;padding:30px;box-shadow:0 12px 35px #6d315a21}
+label{display:block;font-weight:700;margin:12px 0 4px}input,select,textarea{width:100%;padding:11px;border:2px solid #dbb8cd;border-radius:10px;font:inherit}textarea{min-height:70px;resize:vertical}
+button{margin:18px 0 8px;border:0;padding:12px 20px;border-radius:10px;background:#a52f78;color:white;font-size:1rem;cursor:pointer}.preview{border-radius:20px;background:linear-gradient(135deg,#ffdce8,#fff2bf);text-align:center;padding:40px 22px;margin-top:18px;overflow-wrap:anywhere}
+.preview h2{font-size:clamp(1.7rem,4vw,2.7rem);margin:5px 0 13px}.preview p{font-size:1.1rem}.muted{font-size:.85rem;color:#65576c}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f8bb4e;outline-offset:2px}
+@media print{body{background:white}main{box-shadow:none;padding:0}form,.muted,h1{display:none}.preview{break-inside:avoid;margin:0;min-height:5in;display:flex;flex-direction:column;justify-content:center}}</style></head><body><main>
+<h1>🎉 Greeting Card Maker</h1><p>Make a kind message for someone you care about. Try a nickname instead of a full name.</p>
+<form id="cardForm"><label for="who">Who is the card for?</label><input id="who" maxlength="40" value="My Friend" required>
+<label for="occasion">Occasion</label><select id="occasion"><option>Happy Birthday</option><option>Congratulations</option><option>Thank You</option><option>Best Wishes</option></select>
+<label for="note">Your kind message</label><textarea id="note" maxlength="160">You make the world brighter. Have a wonderful day!</textarea>
+<button type="submit">Update card</button> <button id="print" type="button">Print or save as PDF</button></form>
+<section class="preview" aria-label="Greeting card preview"><div style="font-size:3rem">🎈 🌟 🎁</div><h2 id="title"></h2><p id="recipient"></p><p id="message"></p></section>
+<p class="muted">Print button opens your browser's print dialog. Choose Save as PDF if available. Nothing is sent to a server.</p>
+</main><script>
+const $=id=>document.getElementById(id);function update(){ $('title').textContent=$('occasion').value+'!';$('recipient').textContent='To: '+($('who').value.trim()||'Friend');$('message').textContent=$('note').value.trim();}
+$('cardForm').addEventListener('submit',e=>{e.preventDefault();update();});$('print').addEventListener('click',()=>{update();window.print();});update();
+</script></body></html>

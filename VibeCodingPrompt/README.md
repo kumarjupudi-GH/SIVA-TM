@@ -8,5 +8,7 @@ Use this if the site is lost. Fastest route: the finished source is already in t
 3. `03-follow-up-prompts.md`                (every change request, verbatim, in order)
 4. `04-final-content-and-design-decisions.md` (exact palette, tagline, logo, founder text, config)
 
+`implemented-code/` holds the exact deployed code; refresh it with `sh VibeCodingPrompt/sync-from-repo.sh`.
+
 Tip: ask Claude to build the single-file site from file 02, then apply file 04 directly instead of replaying
-all 30 follow-ups; use file 03 as the history of intent.
+all follow-ups; use file 03 as the history of intent.

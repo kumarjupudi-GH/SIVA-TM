@@ -15,7 +15,10 @@
 
 ## Structure
 - Single-file HTML + Three.js r128 (cdnjs), hash routes: #home, #academy, #academy-ai-foundations, #academy-vibe-coding,
-  #academy-entrepreneurship, #vibe-coding-lab, #launchpad, #ai-solutions, #innovation-lab, #about, #contact, #privacy, #terms.
+  #academy-entrepreneurship, #vibe-coding-lab, #launchpad, #ai-solutions, #innovation-lab, #vibe-marketplace, #vibe-book (#vibe-book-1..17),
+  #vibe-try-free, #about, #contact, #privacy, #terms.
+- Menu order: AI Academy, Vibe Coding Lab, Launchpad, AI Solutions, Innovation Lab, Vibe Code Marketplace, About, Contact.
+  The desktop menu shows from 1181px wide; below that the phone-style menu is used.
 - WebGL fallback (`html.no3d`) and `prefers-reduced-motion` support.
 - `CONFIG.formEndpoint` = the Apps Script /exec URL. `CONFIG.showPlaceholders` = false hides placeholder notes.
 - Forms POST `text/plain;charset=utf-8` JSON (avoids a CORS preflight) and expect `{"ok":true}`.
@@ -32,7 +35,7 @@ As a lifelong learner, educator, and mentor, I believe knowledge grows when shar
 My mission is simple: Transform experience into innovation, innovation into opportunity, and opportunity into a better future for everyone.
 
 ## Deployment
-- Source form of the page (no doctype) is used for the claude.ai artifact; `build_deploy.py SOURCE OUTPUT` adds the full
+- `source/index.src.html` (no doctype) is the editable source and the claude.ai artifact form; `build_deploy.py SOURCE OUTPUT` adds the full
   HTML skeleton (doctype, charset utf-8, viewport) for hosting. The repo `index.html` is the built, hosted file.
 - `_headers` sets no-cache on index.html (Cloudflare). Hosted at https://siva-tm.technomarketplace.workers.dev
 - Inquiries: `apps-script/Code.gs` deployed as a Google Apps Script web app (Execute as Me, access Anyone),
@@ -56,3 +59,12 @@ Founder name and photo, KinKeep link, FamilyBuddy status (currently "Beta"), rea
   The manuscript text is stored in the `BOOK` array of the page script (17 sections: Welcome, Chapters 1-12, three Bonus sections, Resources).
 - Apps live in `try/my-first-website`, `try/math-quiz`, `try/daily-planner`, `try/science-flashcards`, `try/greeting-card-maker`, `try/spending-tracker`.
 - Prompt blocks and code blocks in the book have a Copy button and stay selectable; the rest of the book blocks copy, right-click and print.
+
+## FAQ (rewritten to match the current site; 10 questions)
+Programming needed? / Anything free right now? (book and six apps) / Courses open? (no, details unconfirmed) / Can I download the book? (no, read online, prompts have Copy) /
+Do the apps collect data? (no; planner and tracker save only in the browser) / What happens to an inquiry or idea? (saved in a private spreadsheet, not sent to AI) /
+Certificate? (no) / Financial advice? (no) / FamilyBuddy and KinKeep? (separate apps) / Income promises? (none). Exact wording: the `FAQ` array in `source/index.src.html`.
+
+## Implemented code snapshot
+`implemented-code/` is a byte-for-byte copy of the deployed repo files (source, built index.html, apps, Apps Script, logo, worker, headers, build script).
+Refresh it with `sh VibeCodingPrompt/sync-from-repo.sh` after any change. To recreate the exact site, copy its contents to a new repo root and deploy.
